@@ -7,7 +7,7 @@ import React from 'react'
 const App:React.FC = () =>{
 
   return (
-    < BrowserRouter>
+    < BrowserRouter >
     <Routes>
       <Route path='/' Component={LandingPage}>
       </Route>
