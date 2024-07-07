@@ -45,7 +45,7 @@ const home: React.FC = () => {
               View More
             </button>
           </div>
-          <div className="flex flex-row justify-around">
+          <div className="flex flex-col lg:flex-row justify-around">
             <div className="flex flex-row justify-between m-3 text-black text-2xl">
               <p className="mr-3">follow us</p>
               <FontAwesomeIcon icon={faGithub} className="mr-3" cursor={'pointer'} />
