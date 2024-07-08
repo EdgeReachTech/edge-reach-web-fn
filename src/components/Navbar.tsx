@@ -5,8 +5,8 @@ const Navbar: React.FC = () => {
   return (
     <div className="">
       <FontAwesomeIcon
-        icon={faBars}
-        className="mt-11  text-neutral-500  text-3xl  fixed top-0 z-50 lg:hidden  block"
+        icon={faBars }
+        className="mt-11  text-black  text-3xl  fixed top-0 z-50 lg:hidden  block"
       />
       <div className=" lg:mt-7 hidden md:hidden  lg:mx-36   bg-neutral-500 lg:flex lg:flex-row flex-col  fixed lg:top-0 z-50 shadow-md ">
         <div className="m-6 px-5">

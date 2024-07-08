@@ -8,15 +8,16 @@ import {
   faLinkedin,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 const home: React.FC = () => {
   return (
     <div
-      className="h-screen bg-cover top-0 bg-center"
-      style={{ backgroundImage: "url('/b.jpg')" }}
+      className="h-screen bg-cover top-0 bg-center absolute "
+      style={{ backgroundImage: "url('/b.jpge')" }}
     >
       <div className="px-9 pt-1 lg:pt-32 h-screen bg-cover bg-center">
-        <div className="mt-11 flex flex-row">
+        <div className="mt-11 flex flex-row ">
           <h5 className="px-3 lg:text-4xl  font-extrabold bg-black text-white">
             BEST
           </h5>
@@ -46,15 +47,37 @@ const home: React.FC = () => {
             </button>
           </div>
           <div className="flex flex-col lg:flex-row justify-around">
-            <div className="flex flex-row justify-between m-3 text-black text-2xl">
-              <p className="mr-3">follow us</p>
-              <FontAwesomeIcon icon={faGithub} className="mr-3" cursor={'pointer'} />
-              <FontAwesomeIcon icon={faInstagram} className="mr-3" cursor={'pointer'}/>
-              <FontAwesomeIcon icon={faLinkedin} className="mr-3" cursor={'pointer'} />
-              <FontAwesomeIcon icon={faXTwitter} className="mr-3" cursor={'pointer'}/>
-              <FontAwesomeIcon icon={faFacebook} className="mr-3" cursor={'pointer'} />
+            <div className="flex flex-row justify-between m-3 text-black text-2xl  ">
+              <p className="mr-3">Follow us</p>
+              <Link to="https://github.com/EdgeReachTech">
+                <FontAwesomeIcon
+                  icon={faGithub}
+                  className="mr-3 hover:text-blue-950 hover:text-3xl "
+                  cursor={"pointer"}
+                />
+              </Link>
+              <FontAwesomeIcon
+                icon={faInstagram}
+                className="mr-3 hover:text-blue-950 hover:text-3xl"
+                cursor={"pointer"}
+              />
+              <FontAwesomeIcon
+                icon={faLinkedin}
+                className="mr-3 hover:text-blue-950 hover:text-3xl"
+                cursor={"pointer"}
+              />
+              <FontAwesomeIcon
+                icon={faXTwitter}
+                className="mr-3 hover:text-blue-950 hover:text-3xl"
+                cursor={"pointer"}
+              />
+              <FontAwesomeIcon
+                icon={faFacebook}
+                className="mr-3"
+                cursor={"pointer"}
+              />
             </div>
-            <AuthButton  />
+            <AuthButton />
           </div>
         </div>
       </div>
