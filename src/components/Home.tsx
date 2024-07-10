@@ -14,7 +14,7 @@ const home: React.FC = () => {
   return (
     <div
       className="h-screen bg-cover top-0 bg-center absolute "
-      style={{ backgroundImage: "url('/b.jpge')" }}
+      
     >
       <div className="px-9 pt-1 lg:pt-32 h-screen bg-cover bg-center">
         <div className="mt-11 flex flex-row ">
