@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const home: React.FC = () => {
   return (
     <div
-      className="h-screen bg-cover top-0 bg-center absolute "
+      className="h-screen bg-cover top-0 bg-center relative "
       
     >
       <div className="px-9 pt-1 lg:pt-32 h-screen bg-cover bg-center">

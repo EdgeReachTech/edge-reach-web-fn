@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
           </button>
           <button className="p-2 hover:underline">About</button>
           <button className="p-2 hover:underline">Services</button>
-          <button className="p-2 hover:underline">Projects</button>
+          <button className="p-2 hover:underline"><a href="#P">Projects</a></button>
           <button className="p-2 hover:underline">Blogs</button>
           <button className="p-2 hover:underline">Contact</button>
         </div>
