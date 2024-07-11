@@ -8,7 +8,7 @@ import IMG129 from "../assets/serviceimage/IMG-129.jpg";
 const Servicecontent : React.FC= () => {
   return (
   
-    <div className="  bg-gray-300 min-h-full w-full absolute " >
+    <div className="  bg-gray-300 min-h-full w-full overflow-hidden " >
       <div className=" lg:grid grid-cols-2 ">
       <div className="flex flex-col space-y-5">
       <p className=" pt-10 px-20 mx-10 text-xl font-semibold -tracking-wide " >
@@ -34,16 +34,16 @@ const Servicecontent : React.FC= () => {
             </div>
   
 
-          <div className="mt-4  lg:flex flex-col pt-40 gap-10  ">
+          <div className="mt-4 ml-32  lg:flex flex-col lg:pt-40 gap-10 lg:ml-0 ">
             <div className="lg:flex gap-4 ">
-            <div className="card">
+            <div className="card mb-5">
               <img src={IMG24} alt="web dev"  className="w-80 h-48 object-cover rounded"/>
               <div className=" bg-white rounded w-80 h-20 flex justify-center gap-10 p-5">
                 <div className="bg-cyan-500 h-2 w-14 mt-5 "></div>
                <p className="font-bold">Web App <span className="block"> Development</span></p>
               </div>
             </div>
-            <div className="card">
+            <div className="card mb-5">
               <img src={IMG86} alt="web dev"  className="w-80 h-48 object-cover rounded"/>
               <div className=" bg-white rounded w-80 h-20 flex justify-center gap-10 p-5">
                 <div className="bg-cyan-500 h-2 w-14 mt-5 "></div>
@@ -52,21 +52,21 @@ const Servicecontent : React.FC= () => {
             </div>
             </div>
             <div className="  lg:flex gap-4 lg:-ml-60 ">
-            <div className="card">
+            <div className="card mb-5">
               <img src={IMG129} alt="web dev"  className="w-80 h-48 object-cover rounded"/>
               <div className=" bg-white rounded w-80 h-20 flex justify-center gap-10 p-5">
                 <div className="bg-cyan-500 h-2 w-14 mt-5 "></div>
                <p className="font-bold">API Development <span className="block"> and Integration</span></p>
               </div>
             </div>
-            <div className="card">
+            <div className="card mb-5">
               <img src={IMG72} alt="web dev"  className="w-80 h-48 object-cover rounded"/>
               <div className=" bg-white rounded w-80 h-20 flex justify-center gap-10 p-5">
                 <div className="bg-cyan-500 h-2 w-14 mt-5 "></div>
                <p className="font-bold">Support and <span className="block"> Training</span></p>
               </div>
             </div>
-            <div className="card">
+            <div className="card mb-5">
               <img src={IMG77} alt="web dev"  className="w-80 h-48 object-cover rounded"/>
               <div className=" bg-white rounded w-80 h-20 flex justify-center gap-10 p-5">
                 <div className="bg-cyan-500 h-2 w-14 mt-5 "></div>

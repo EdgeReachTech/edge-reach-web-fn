@@ -1,19 +1,21 @@
 // App.tsx
 import React from 'react';
-import Home from '../components/Home';
 import Navbar from '../components/Navbar';
-import Homebg from '../components/Homebg';
-import Servicepage from './servicepage';
+import PortfolioPage from './portfolioPage';
+import HomePage from './homePage';
+import Servicecontent from '../components/servicecontent';
+
 
 
 const LandingPage: React.FC = () => {
   return (
-    <>
-    <Homebg />
+    <div className='scroll-smooth overflow-auto h-full'>
     <Navbar />
-    <Home />
-    <Servicepage />
-    </>
+    <HomePage />
+    <Servicecontent />
+    <PortfolioPage />
+    </div>
+    
    
   );
 };
