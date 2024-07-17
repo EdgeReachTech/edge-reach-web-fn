@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import PortfolioPage from './portfolioPage';
 import HomePage from './homePage';
 import Servicecontent from '../components/servicecontent';
+import LiveChatPage from '../components/Livechatpage';
 
 
 
@@ -14,6 +15,7 @@ const LandingPage: React.FC = () => {
     <HomePage />
     <Servicecontent />
     <PortfolioPage />
+    <LiveChatPage/>
     </div>
     
    
