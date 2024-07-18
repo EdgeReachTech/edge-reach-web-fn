@@ -1,9 +1,6 @@
-import { title } from "process";
 import React from "react";
-import Portfoliobg from "./Portfolio";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Portfolio: React.FC = () => {
   const portfolios = [
@@ -32,11 +29,13 @@ const Portfolio: React.FC = () => {
       desc: "Branding Code",
     },
   ];
+
   return (
-       <div className="flex flex-row pt-36 relative justify-between m-0 overflow-hidden">
+    <div className="relative min-h-screen">
+      <div className="flex flex-row pt-36 justify-between">
         <div className="flex flex-row justify-start">
           {portfolios.map((portfolio) => (
-            <div className=" w-72 rounded-lg m-1 flex flex-col overflow-hidden bg-white ml-6">
+            <div key={portfolio.title} className="w-72 rounded-lg m-1 flex flex-col overflow-hidden bg-white ml-6">
               <img
                 className="overflow-hidden h-64"
                 src={portfolio.image}
@@ -50,21 +49,39 @@ const Portfolio: React.FC = () => {
           ))}
         </div>
         <div className="flex flex-col justify-between">
-          <div className="flex flex-col mx-11 text-white ">
-            
-            <h5 className="my-5 text-3xl "><span className="bg-gradient-to-br from-orange-400 to-yellow-300 m-2 rounded-s-md px-1">PORT</span>FOLIO</h5>
-            <p className="text-4xl my-11"> Experienced in Gallery</p>
+          <div className="flex flex-col mx-11 text-white">
+            <h5 className="my-5 text-3xl">
+              <span className="bg-gradient-to-br from-orange-400 to-yellow-300 m-2 rounded-s-md px-1">
+                PORT
+              </span>
+              FOLIO
+            </h5>
+            <p className="text-4xl my-11">Experienced in Gallery</p>
           </div>
           <div className="mx-36 flex flex-row">
-            <FontAwesomeIcon icon={faAngleLeft} className="text-xl mx-5 p-3 bg-gray-400 rounded-full hover:bg-gray-500 cursor-pointer " />
-            <FontAwesomeIcon icon={faAngleRight} className="text-xl mx-5 p-3 bg-gray-400 rounded-full hover:bg-gray-500 cursor-pointer" />
-          </div>
-          </div>
-          <div>
-            <h4>VIEW ALL PORTFOLIO</h4>
+            <FontAwesomeIcon
+              icon={faAngleLeft}
+              className="text-xl mx-5 p-3 bg-gray-400 rounded-full hover:bg-gray-500 cursor-pointer"
+            />
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              className="text-xl mx-5 p-3 bg-gray-400 rounded-full hover:bg-gray-500 cursor-pointer"
+            />
           </div>
         </div>
-        
+      </div>
+      <div className="absolute bottom-0 left-0 w-full text-center mb-28 flex flex-row justify-center">
+        <div>
+         <h5 className="text-xl p-3 font-bold">VIEW ALL PORTFOLIO</h5>
+        </div>
+        <div>
+        <FontAwesomeIcon
+              icon={faAngleRight}
+              className="text-xl mx-0 p-4 cursor-pointer"
+            />
+        </div>
+      </div>
+    </div>
   );
 };
 
