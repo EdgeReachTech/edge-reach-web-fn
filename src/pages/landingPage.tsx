@@ -5,7 +5,7 @@ import PortfolioPage from './portfolioPage';
 import HomePage from './homePage';
 import Servicecontent from '../components/servicecontent';
 import LiveChatPage from '../components/Livechatpage';
-
+import Footer from '../components/Footer';
 
 
 const LandingPage: React.FC = () => {
@@ -16,6 +16,7 @@ const LandingPage: React.FC = () => {
     <Servicecontent />
     <PortfolioPage />
     <LiveChatPage/>
+    <Footer/>
     </div>
     
    
