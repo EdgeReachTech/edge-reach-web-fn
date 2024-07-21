@@ -9,10 +9,10 @@ const Servicecontent: React.FC = () => {
     <div className="  bg-gray-300 min-h-full w-full overflow-hidden ">
       <div className=" lg:grid grid-cols-2 ">
         <div className="flex flex-col space-y-5">
-          <p className=" pt-10 px-20 mx-10 text-xl font-semibold -tracking-wide ">
+          <p className=" pt-10 px-20 mx-1 text-xl font-semibold -tracking-wide ">
             <span className="bg-cyan-500  p-1">OUR</span> SERVICES
           </p>
-          <div className="text-2xl font-bold px-20 mx-10">
+          <div className="text-2xl font-bold px-20 mx-1">
             <p className="pt-10  ">EdgeReach Tech: Empowering Real-</p>
             <p className=" ">Life Solutions with Cutting-Edge </p>
             <p className=""> Technology</p>
@@ -20,14 +20,14 @@ const Servicecontent: React.FC = () => {
           <div className="mx-20 px-10">
             <hr className=" my-5 pt-1 bg-slate-400 w-32  " />
           </div>
-          <div className="text-xl font-medium px-20 mx-10 ">
+          <div className="text-xl font-medium px-20 mx-1 ">
             <p>
               At EdgeReach Tech, we tackle tech and IT challenges head-on to
               craft optimal{" "}
             </p>
             <p> solutions through various services.</p>
           </div>
-          <div className="px-20 my-3 mx-10">
+          <div className="px-20 my-3 mx-1">
             <p>
               Build powerful applications that streamline processes and elevate
               your brand.
@@ -73,7 +73,7 @@ const Servicecontent: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="  lg:flex gap-4 lg:-ml-60 ">
+          <div className=" ml-32 lg:flex gap-4 lg:-ml-60 flex-wrap ">
             <div className="card mb-5">
               <img
                 src={IMG129}

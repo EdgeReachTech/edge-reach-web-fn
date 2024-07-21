@@ -19,22 +19,11 @@ const Portfolio: React.FC = () => {
       title: "Portfolio 2",
       desc: "Branding and Coding",
     },
-    {
-      image:
-        "https://res.cloudinary.com/dxy33wiax/image/upload/v1713895476/oibnmdmwycczygpedrqz.jpg",
-      title: "Portfolio 3",
-      desc: "Branding and Coding",
-    },
-    {
-      image:
-        "https://res.cloudinary.com/dxy33wiax/image/upload/v1713895476/oibnmdmwycczygpedrqz.jpg",
-      title: "Portfolio 4",
-      desc: "Branding Code",
-    },
+   
   ];
   return (
        <div className="flex flex-row pt-36 relative justify-between m-0 overflow-hidden">
-        <div className="flex flex-row justify-start">
+        <div className="flex flex-row justify-start ">
           {portfolios.map((portfolio) => (
             <div className=" w-72 rounded-lg m-1 flex flex-col overflow-hidden bg-white ml-6">
               <img
