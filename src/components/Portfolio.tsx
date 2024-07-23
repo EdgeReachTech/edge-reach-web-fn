@@ -1,6 +1,4 @@
-import { title } from "process";
-import React from "react";
-import Portfoliobg from "./Portfolio";
+import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
