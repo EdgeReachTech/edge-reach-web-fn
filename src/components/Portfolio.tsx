@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,18 +16,7 @@ const Portfolio: React.FC = () => {
       title: "Portfolio 2",
       desc: "Branding and Coding",
     },
-    {
-      image:
-        "https://res.cloudinary.com/dxy33wiax/image/upload/v1713895476/oibnmdmwycczygpedrqz.jpg",
-      title: "Portfolio 3",
-      desc: "Branding and Coding",
-    },
-    {
-      image:
-        "https://res.cloudinary.com/dxy33wiax/image/upload/v1713895476/oibnmdmwycczygpedrqz.jpg",
-      title: "Portfolio 4",
-      desc: "Branding Code",
-    },
+   
   ];
 
   return (
