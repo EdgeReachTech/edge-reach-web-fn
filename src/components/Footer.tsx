@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoMdCall } from 'react-icons/io';
-import { MdEmail, MdOutlinePermIdentity, MdSend } from 'react-icons/md';
+import { MdEmail, MdOutlinePermIdentity} from 'react-icons/md';
 import { FaSitemap, FaQuestionCircle,FaArrowRight,FaInstagram,FaTwitter,FaLinkedinIn,FaGithub,FaPinterestSquare,FaFacebook,FaRegArrowAltCircleUp } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
