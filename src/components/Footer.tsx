@@ -60,8 +60,8 @@ const Footer: React.FC = () => {
             </div>
             <div className='flex-1'>
               <h3 className='text-gray-500 font-semibold'>Send me tips,trendes,updates&offer</h3>
-              <div className='w-80 h-10 bg-gradient-to-r from-cyan-300 to-cyan-600 rounded-lg flex p-2 gap-9 '>
-                <input type="text" name="" id="" placeholder ='enter your email address' className='bg-transparent placeholder-slate-950' />
+              <div className='w-80 h-10 bg-gradient-to-r from-cyan-300 to-cyan-600 rounded-lg flex r gap-9 '>
+                <input type="text" name="" id="" placeholder ='enter your email address' className='p-2 rounded-l placeholder-slate-950' />
                 <button className='text-white font-bold'>subscribe</button>
               </div>
             </div>
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
           <div className='text-gray-400 flex flex-col md:flex-row  '>
             <p className='lg:-mx-32'>Created And Managed <span className='block'>By EdgeReach Tech</span></p>
             <p className='m-auto hidden lg :block '>EdgereachTech All Right Reserved 2024</p>
-            <FaRegArrowAltCircleUp size={50} className='text-cyan-500 mb-3' />
+            <FaRegArrowAltCircleUp size={50} className='text-cyan-500 mb-3 hidden lg:block'  />
 
           </div>
         </div>
