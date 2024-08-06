@@ -7,19 +7,19 @@ const Portfolio: React.FC = () => {
     {
       image:
         "https://res.cloudinary.com/dxy33wiax/image/upload/v1713895476/oibnmdmwycczygpedrqz.jpg",
-      title: "Portfolio 1",
+      title: "Our website",
       desc: "Edge-reach-tech",
     },
     {
       image:
         "https://res.cloudinary.com/dxy33wiax/image/upload/v1713895476/oibnmdmwycczygpedrqz.jpg",
-      title: "Portfolio 2",
+      title: "Stock management",
       desc: "Branding and Coding",
     },
   ];
 
   return (
-    <div className="relative min-h-screen p-5 md:p-10">
+    <div id="home" className="relative min-h-screen p-5 md:p-10">
       <div className="flex flex-col md:flex-row pt-36 justify-between">
         <div className="flex flex-wrap justify-center md:justify-start">
           {portfolios.map((portfolio) => (

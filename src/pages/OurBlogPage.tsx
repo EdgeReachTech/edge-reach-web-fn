@@ -3,7 +3,7 @@ import OurBlog from '../components/OurBlog'
 
 const OurBlogPage:React.FC = () => {
   return (
-    <div>
+    <div id='blog'>
       <OurBlog/>
     </div>
   )

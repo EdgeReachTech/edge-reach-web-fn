@@ -7,7 +7,7 @@ import IMG129 from "../assets/serviceimage/IMG-129.jpg";
 
 const Servicecontent: React.FC = () => {
   return (
-    <div className="bg-gray-300 min-h-full w-full overflow-hidden p-5 lg:p-10">
+    <div id="services" className="bg-gray-300 min-h-full w-full overflow-hidden p-5 lg:p-10">
       <div className="lg:grid grid-cols-1">
         <div className="flex flex-col space-y-5">
           <p className="pt-10 lg:px-20 mx-1 text-xl font-semibold tracking-wide">
