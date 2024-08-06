@@ -67,15 +67,15 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className='flex text-white font-bold md:gap-10 m-auto flex-col md:flex-row'>
-            <h3>+250-788-674-885</h3>
+            <h3>+250 788 674 885</h3>
             <h3>TERMS AND SERVICES</h3>
             <h3>COPYRIGHT</h3>
             <h3>KIGALI RWANDA</h3>
             <h3>FAQ</h3>
           </div>
-          <div className='text-gray-400 flex flex-col md:flex-row  '>
+          <div className='text-gray-400 flex flex-col md:flex-row  justify-around px-20 '>
             <p className='lg:-mx-32'>Created And Managed <span className='block'>By EdgeReach Tech</span></p>
-            <p className='m-auto hidden lg :block '>EdgereachTech All Right Reserved 2024</p>
+            <p className='m-auto hidden lg:block '>EdgereachTech All Right Reserved 2024</p>
             <FaRegArrowAltCircleUp size={50} className='text-cyan-500 mb-3 hidden lg:block'  />
 
           </div>
