@@ -1,19 +1,49 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from "react";
+import IMG77 from "../assets/serviceimage/IMG-77.jpg";
+import IMG24 from "../assets/serviceimage/IMG-24.jpg";
+import IMG72 from "../assets/serviceimage/IMG-72.jpg";
+import IMG86 from "../assets/serviceimage/IMG-86.jpg";
+import IMG129 from "../assets/serviceimage/IMG-129.jpg";
 
+const images = [IMG77, IMG24, IMG72, IMG86, IMG129];
 
-const Homebg:React.FC = () => {
+const Homebg: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalId = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    const totalImages = images.length;
+
+    const slide = () => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
+    };
+
+    intervalId.current = window.setInterval(slide, 8000);
+
+    return () => {
+      if (intervalId.current) {
+        clearInterval(intervalId.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="bg-gray-300 m-0 w-full h-full absolute overflow-hidden">
-      <div className="clip-custom-3 w-7/12 h-1/4  bg-gradient-to-t from-cyan-400 to-cyan-600 " />
-      {/* <div className="" style={{ backgroundImage: "url('/b.jpg')" }}>
-        <img
-          src="/1.jpg"
-          alt="edge"
-          className="clip-custom-1 clip-custom-2 lg:h-5/6 lg:w-1/3 sm:w-2/6  w-0  lg:border-l-8 border-black   fixed right-0 top-0 "
-        />
-      </div> */}
+    <div className="absolute w-full h-screen overflow-hidden bg-gray-300">
+      <div
+        className="flex transition-transform duration-1000 ease-in-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {images.map((image, index) => (
+          <img
+            key={index}
+            className="w-full h-full brightness-50 object-cover"
+            src={image}
+            alt={`Slide ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default Homebg
+export default Homebg;

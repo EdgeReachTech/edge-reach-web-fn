@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoMdCall } from 'react-icons/io';
-import { MdEmail, MdOutlinePermIdentity, MdSend } from 'react-icons/md';
+import { MdEmail, MdOutlinePermIdentity} from 'react-icons/md';
 import { FaSitemap, FaQuestionCircle,FaArrowRight,FaInstagram,FaTwitter,FaLinkedinIn,FaGithub,FaPinterestSquare,FaFacebook,FaRegArrowAltCircleUp } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
@@ -60,23 +60,23 @@ const Footer: React.FC = () => {
             </div>
             <div className='flex-1'>
               <h3 className='text-gray-500 font-semibold'>Send me tips,trendes,updates&offer</h3>
-              <div className='w-80 h-10 bg-gradient-to-r from-cyan-300 to-cyan-600 rounded-lg flex p-2 gap-9 '>
-                <input type="text" name="" id="" placeholder ='enter your email address' className='bg-transparent placeholder-slate-950' />
+              <div className='w-80 h-10 bg-gradient-to-r from-cyan-300 to-cyan-600 rounded-lg flex r gap-9 '>
+                <input type="text" name="" id="" placeholder ='enter your email address' className='p-2 rounded-l placeholder-slate-950' />
                 <button className='text-white font-bold'>subscribe</button>
               </div>
             </div>
           </div>
-          <div className='flex text-white font-bold gap-10 m-auto'>
-            <h3>+250-788-674-885</h3>
+          <div className='flex text-white font-bold md:gap-10 m-auto flex-col md:flex-row'>
+            <h3>+250 788 674 885</h3>
             <h3>TERMS AND SERVICES</h3>
             <h3>COPYRIGHT</h3>
             <h3>KIGALI RWANDA</h3>
             <h3>FAQ</h3>
           </div>
-          <div className='text-gray-400 flex  '>
+          <div className='text-gray-400 flex flex-col md:flex-row  justify-around px-20 '>
             <p className='lg:-mx-32'>Created And Managed <span className='block'>By EdgeReach Tech</span></p>
-            <p className='m-auto '>EdgereachTech All Right Reserved 2024</p>
-            <FaRegArrowAltCircleUp size={50} className='text-cyan-500 mb-3' />
+            <p className='m-auto hidden lg:block '>EdgereachTech All Right Reserved 2024</p>
+            <FaRegArrowAltCircleUp size={50} className='text-cyan-500 mb-3 hidden lg:block'  />
 
           </div>
         </div>

@@ -4,7 +4,7 @@ import Portfolio from '../components/Portfolio'
 
 const PortfolioPage:React.FC = () => {
   return (
-    <div id='P'>
+    <div id='projects'>
       <Portfoliobg />
       <Portfolio />
     </div>

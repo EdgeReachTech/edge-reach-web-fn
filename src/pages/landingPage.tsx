@@ -3,6 +3,8 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import PortfolioPage from './portfolioPage';
 import HomePage from './homePage';
+import TestimonyPage from './TestimonyPage';
+import OurBlogPage from './OurBlogPage';
 import Servicecontent from '../components/servicecontent';
 import LiveChatPage from '../components/Livechatpage';
 import Footer from '../components/Footer';
@@ -17,6 +19,8 @@ const LandingPage: React.FC = () => {
     <Servicecontent />
     <PortfolioPage />
     <OurTeamComponent/>
+    <TestimonyPage />
+    <OurBlogPage />
     <LiveChatPage/>
     <Footer/>
     </div>
