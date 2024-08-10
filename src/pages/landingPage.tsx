@@ -9,6 +9,7 @@ import Servicecontent from '../components/servicecontent';
 import LiveChatPage from '../components/Livechatpage';
 import Footer from '../components/Footer';
 import OurTeamComponent from '../components/OurTeamComponent';
+import Aboutus from './about';
 
 
 const LandingPage: React.FC = () => {
@@ -16,6 +17,7 @@ const LandingPage: React.FC = () => {
     <div className='scroll-smooth overflow-auto h-full'>
     <Navbar />
     <HomePage />
+    <Aboutus/>
     <Servicecontent />
     <PortfolioPage />
     <OurTeamComponent/>
