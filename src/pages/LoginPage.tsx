@@ -1,8 +1,9 @@
+import React from 'react';
 import { faBars, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import 'tailwindcss/tailwind.css';
-const LoginComponent = () => {
+const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -87,7 +88,7 @@ const LoginComponent = () => {
               Sign In
             </button>
           </div>
-          <p className="mt-4">You don't have any account? <a href="#" className="text-blue-500">Sign Up Here.</a></p>
+          <p className="mt-4">You don't have any account? <a href="signup" className="text-blue-500">Sign Up Here.</a></p>
         </form>
       </div>
       </div>
@@ -98,5 +99,5 @@ const LoginComponent = () => {
   );
 };
 
-export default LoginComponent;
+export default LoginPage;
 

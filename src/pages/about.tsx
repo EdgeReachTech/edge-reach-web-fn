@@ -9,7 +9,7 @@ import { FaFacebookF } from "react-icons/fa";
 
 const Aboutus: React.FC = () => {
   return (
-    <div className="container mt-10 bg-gray-300 h-auto relative pt-9 flex px-10">
+    <div className=" bg-gray-300 h-auto   relative pt-9 flex px-10 ">
       <div className="left hidden md:block w-full md:w-1/2">
         <div className="relative">
           <div className="relative">
@@ -119,7 +119,7 @@ const Aboutus: React.FC = () => {
           background:
             "linear-gradient(197.07deg, #FFA500 40.58%, #FFE604 88.26%)",
         }}
-      ></div>
+      />
     </div>
   );
 };
