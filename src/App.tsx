@@ -1,19 +1,18 @@
 
-import { Route, Routes } from 'react-router-dom';
-import Apps from './Apps';
-import LoginComponent from './LoginComponent';
+import './index.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import LandingPage from './pages/landingPage'
+import React from 'react'
+const App:React.FC = () =>{
 
-function App() {
   return (
-    <>
-      <h1 className=" bg-slate-500 w-full h-10 text-center">Welcome To Edge_reach Tech</h1>
-      <LoginComponent/>
-     
-      <Routes>
-      <Route path='Apps' Component={Apps}/>
-      </Routes>
-    </>
-  );
+    < BrowserRouter >
+    <Routes>
+      <Route path='/' Component={LandingPage}>
+      </Route>
+    </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
