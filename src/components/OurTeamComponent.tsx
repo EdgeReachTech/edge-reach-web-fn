@@ -16,7 +16,7 @@ const OurTeamComponent:React.FC = () => {
       id: 2,
       img: IMG86,
       name: "FIACRE",
-      role: "CAM",
+      role: "CEO",
     },
     {
       id: 3,
