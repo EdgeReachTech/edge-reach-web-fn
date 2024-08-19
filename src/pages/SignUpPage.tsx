@@ -1,5 +1,6 @@
 import React, { HtmlHTMLAttributes, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { ClipLoader } from "react-spinners";
 
 const SignUpPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -122,11 +123,20 @@ const SignUpPage: React.FC = () => {
               </div>
               <div className="text-right">
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded"
+                  className={` text-white px-4 py-2 rounded ${
+                    isLoading ? "bg-gray-700" : "bg-blue-500"
+                  }`}
                   type="button"
                   onClick={handleRegister}
+                  disabled={isLoading}
                 >
-                  {isLoading ? "Signing..." : "Sign up"}
+                  {isLoading ? (
+                    <div className="flex flex-row justify-between items-center">
+                      <ClipLoader size={20} color="white" /> loading...
+                    </div>
+                  ) : (
+                    "Sign up"
+                  )}
                 </button>
               </div>
             </form>
