@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [formData, setFormData] =  useState({
     email:"",
     password:""
@@ -19,11 +20,15 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async () => {
    try {
+     setIsLoading(true)
      await Login(formData);
      
    } catch (error:any) {
     toast.error('Unexpected error occured ')
     console.error(" login failed",error.message)
+   }
+   finally{
+    setIsLoading(false)
    }
   };
   const  handleCHangeFormData= (e:React.ChangeEvent<HTMLInputElement>) =>{
@@ -122,12 +127,12 @@ const LoginPage: React.FC = () => {
                 type="button"
                 onClick={handleLogin}
               >
-                Sign In
+                {isLoading?"logging in...":"Logi in"}
               </button>
             </div>
             <p className="mt-4">
               You don't have any account?{" "}
-              <a href="signup" className="text-blue-500">
+              <a href="/register" className="text-blue-500">
                 Sign Up Here.
               </a>
             </p>
