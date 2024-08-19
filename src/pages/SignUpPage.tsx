@@ -2,6 +2,7 @@ import React, { HtmlHTMLAttributes, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
 const SignUpPage: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     FirstName: "",
     LastName: "",
@@ -14,15 +15,18 @@ const SignUpPage: React.FC = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]:value
-    })
+      [name]: value,
+    });
   };
 
   const handleRegister = async () => {
     try {
+      setIsLoading(true);
       await Register(formData);
     } catch (error: any) {
       console.log(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -114,7 +118,6 @@ const SignUpPage: React.FC = () => {
                   className="w-full p-1 border border-gray-300 rounded focus:outline-none bg-slate-100"
                   type="password"
                   name="ComfirmPassword"
-                  
                 />
               </div>
               <div className="text-right">
@@ -123,14 +126,14 @@ const SignUpPage: React.FC = () => {
                   type="button"
                   onClick={handleRegister}
                 >
-                  Sign Up
+                  {isLoading ? "Signing..." : "Sign up"}
                 </button>
               </div>
             </form>
             <div className="text-center mt-4">
               <p>
                 Already have an Account?{" "}
-                <a href="#" className="text-blue-500">
+                <a href="/login" className="text-blue-500">
                   Login here!
                 </a>
               </p>
