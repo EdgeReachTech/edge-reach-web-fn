@@ -1,6 +1,7 @@
-import React, { HtmlHTMLAttributes, useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { ClipLoader } from "react-spinners";
+import { FaArrowLeft } from "react-icons/fa";
 
 const SignUpPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -32,8 +33,16 @@ const SignUpPage: React.FC = () => {
   };
   return (
     <div className=" h-screen bg-[#008080]">
-      <div className="flex">
-        <div className="w-1/2 flex items-center max-sm:hidden justify-center p-5 ">
+      <div className="flex ">
+        <a href="/">
+          {" "}
+          <FaArrowLeft
+            size={30}
+            color="white"
+            className="fixed top-5 left-5 "
+          />
+        </a>
+        <div className="w-2/3 flex items-center max-sm:hidden justify-center p-5 ">
           <div className="text-white text-center ">
             <h1 className="text-4xl mb-4">EDGE-REACH TECH</h1>
             <p className="mb-8">
@@ -61,13 +70,13 @@ const SignUpPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2 max-sm:w-screen flex items-center justify-center  bg-[#008080] mt-5 max-sm:m-0 mb-5 ">
-          <div className="w-full max-w-md p-8 bg-[#C0C0C0] max-sm:bg-white shadow-md rounded">
+        <div className="w-1/3 max-sm:w-screen flex items-center justify-center h-screen  bg-[#C0C0C0] pt-5 max-sm:m-0 mb-  ">
+          <div className="w-full max-w-md p-8 bg-[#C0C0C0] max-sm:bg-white shadow-2xl rounded">
             <h2 className="text-2xl font-bold mb-6">
               Welcome to EDGE-REACH TECH
             </h2>
 
-            <form className="space-y-4">
+            <form className="space-y-4 ">
               <div>
                 <label className="block text-gray-700">First Name</label>
                 <input
@@ -151,7 +160,7 @@ const SignUpPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <footer className="lg:bottom-0 fixed text-center w-full ">
+      <footer className="lg:bottom-0 bg-[#195b5b] fixed text-center w-full ">
         <p className="text-center text-white ">
           Copyright &copy; 2024 Edge_reach tech. All rights reserved.
         </p>

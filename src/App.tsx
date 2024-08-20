@@ -8,6 +8,7 @@ import AuthContextAPI from './context/AuthContext'
 import SignUpPage from './pages/SignUpPage'
 import { ToastContainer } from 'react-toastify'
 import Verify from './pages/Verify'
+import MessagePage from './pages/MessagePage'
 const App:React.FC = () =>{
 
   return (
@@ -20,6 +21,7 @@ const App:React.FC = () =>{
       <Route path='/login' Component={LoginPage} />
       <Route path='/register' Component={SignUpPage} />
       <Route path='/verify/:token' Component={Verify} />
+      <Route path='/message' Component={MessagePage} />
     </Routes>
     </BrowserRouter>
     </AuthContextAPI>

@@ -56,9 +56,8 @@ const Aboutus: React.FC = () => {
             }}
             className="rounded-lg"
           >
-            ABO
+            ABOUT US
           </span>
-          UT US
         </h1>
         <p
           style={{
