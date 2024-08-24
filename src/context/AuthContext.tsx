@@ -1,23 +1,33 @@
 import axios from "axios";
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useState,
-} from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+interface user {
+  _id: string;
+  firstName:string;
+  lastName: string;
+  email: string
+  password: string;
+  location: string;
+  status: string;
+  role: string;
+  gender: string;
+  isVerified: boolean;
+  createdAt: Date;
+}
 interface AuthContextData {
   signed: boolean;
-  isLoading:boolean,
-  user: object | null;
+  isLoading: boolean;
+  user: user | null ;
+  users: user[];
   Login(user: object): Promise<void>;
   Register(user: object): Promise<void>;
   Verify(token: string): Promise<boolean>;
   getUser(token: string): Promise<void>;
   Logout(): void;
+  getAllUsers(token: string): Promise<void>;
 }
 interface AuthProviderProps {
   children: ReactNode;
@@ -28,9 +38,10 @@ export const AuthContext = createContext<AuthContextData>(
 );
 
 const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<object | null>(null);
-  const [isLoading, setIsLoading] = useState(false)
-  
+  const [user, setUser] = useState<user | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [users, setUsers] = useState([]);
+
   const Login = async (userData: object) => {
     try {
       const response = await axios.post(
@@ -96,10 +107,13 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
     toast.success("loggedout");
     window.location.href = "/login";
   };
+
   const getUser = async (token: string) => {
     try {
-      
-      setIsLoading(true)
+      setIsLoading(true);
+      if(!token){
+        window.location.href='/login'
+      }
       const response = await axios.get(
         "https://adgereachtech-web-bn.onrender.com/user/logged-user",
         {
@@ -116,16 +130,45 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
           toast.error(error.response.data.message);
         } else if (error.request) {
           toast.error("failed to connect to server");
+        
         } else {
           toast.error("failed to send request");
         }
       } else {
         toast.error("unexpected error");
       }
+    } finally {
+      setIsLoading(false);
     }
-    finally{
-      setIsLoading(false)
+  };
+
+  const getAllUsers = async (token: string) => {
+    try {
+      const response = await axios.get(
+        "https://adgereachtech-web-bn.onrender.com/user/all-user",
+        {
+          headers: {
+            "Contemt-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setUsers(response.data);
+    } catch (error:any) {
+      if(axios.isAxiosError(error)){
+        if(error.response)
+      {  console.log(error.response.data.message);
+      }
+      else if(error.request){
+      console.log('server failed to reposnd')
+      }
+      else{
+        console.log('error fetching users')
+      }
+    }else{
+      console.log('unexpected error')
     }
+  }
   };
 
   return (
@@ -138,7 +181,9 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
         Verify,
         Logout,
         getUser,
+        getAllUsers,
         isLoading,
+        users
       }}
     >
       {children}
