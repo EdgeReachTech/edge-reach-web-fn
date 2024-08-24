@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 
 const MessagePage: React.FC = () => {
-  const {isLoading, user, getUser, getAllUsers,users } = useAuth();
+  const {isLoading, getUser, getAllUsers,users } = useAuth();
   useEffect(() => {
     const token = localStorage.getItem("token");
     

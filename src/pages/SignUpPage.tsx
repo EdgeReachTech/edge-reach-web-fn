@@ -12,7 +12,7 @@ const SignUpPage: React.FC = () => {
     Location: "",
     Password: "",
   });
-  const { signed, Register } = useAuth();
+  const {  Register } = useAuth();
   const handleFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
