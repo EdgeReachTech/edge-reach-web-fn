@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
     setShowPassword(!showPassword);
   };
 
-  const { signed, Login } = useAuth();
+  const {  Login } = useAuth();
 
   const handleLogin = async () => {
    try {
