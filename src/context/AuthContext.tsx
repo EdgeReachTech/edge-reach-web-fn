@@ -20,7 +20,7 @@ interface user {
 interface AuthContextData {
   signed: boolean;
   isLoading: boolean;
-  user: user | null ;
+  loggedUser: user | null ;
   users: user[];
   Login(user: object): Promise<void>;
   Register(user: object): Promise<void>;
@@ -38,7 +38,7 @@ export const AuthContext = createContext<AuthContextData>(
 );
 
 const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<user | null>(null);
+  const [loggedUser, setUser] = useState<user | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [users, setUsers] = useState([]);
 
@@ -174,8 +174,8 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        signed: Boolean(user),
-        user,
+        signed: Boolean(loggedUser),
+        loggedUser,
         Login,
         Register,
         Verify,

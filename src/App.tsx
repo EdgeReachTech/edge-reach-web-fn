@@ -9,11 +9,13 @@ import SignUpPage from './pages/SignUpPage'
 import { ToastContainer } from 'react-toastify'
 import Verify from './pages/Verify'
 import MessagePage from './pages/MessagePage'
+import MessageContextAPI  from './context/messageAuth'
 const App:React.FC = () =>{
 
   return (
+    
     <AuthContextAPI>
-
+      <MessageContextAPI >
     < BrowserRouter >
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     <Routes>
@@ -24,6 +26,7 @@ const App:React.FC = () =>{
       <Route path='/message' Component={MessagePage} />
     </Routes>
     </BrowserRouter>
+    </MessageContextAPI>
     </AuthContextAPI>
   )
 }
