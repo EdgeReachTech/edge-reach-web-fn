@@ -9,19 +9,19 @@ const OurBlog: React.FC = () => {
     {
       image: image1,
       date: "June 20, 2024",
-      category: "Business",
+      category: "Launch Edge-Reach",
       title: "Working Together as a Team",
     },
     {
       image: image2,
       date: "June 20, 2024",
-      category: "Business",
+      category: "Launch EdgeReach",
       title: "Collaboration is Key to Success",
     },
     {
       image: image3,
       date: "June 20, 2024",
-      category: "Business",
+      category: "Launch Edge-Reach",
       title: "Innovation in the Digital Age",
     },
   ];
@@ -29,26 +29,26 @@ const OurBlog: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 3000); // Change slide every 3 seconds
+    }, 3000); 
     return () => clearInterval(interval);
   }, [slides.length]);
 
   return (
-    <div className="relative min-h-screen p-5 md:p-10 bg-slate-300">
-      <div className="flex flex-col md:flex-row justify-between">
+    <div className="relative  p-5 md:p-10 bg-slate-300">
+      <div className="flex flex-col md:flex-row lg:justify-center px-32">
         <div className="w-full md:w-1/2 mb-10 md:mb-0">
-          <h3 className="font-bold text-2xl md:text-3xl">
-            <span className="mr-2 bg-gradient-to-l from-cyan-700 to-cyan-400 p-1 text-white">
+          <h3 className="font-bold text-2xl md:text-4xl font-loboto">
+            <span className="mr-2 bg-gradient-to-l from-cyan-700 to-cyan-400 p-1 text-white rounded-lg ">
               OUR
             </span>
             BLOG
           </h3>
-          <h1 className="mt-10 text-2xl md:text-4xl font-bold">
+          <h1 className="mt-10  md:text-4xl font-bold font-loboto text-4xl">
             Unleashing Innovation,
             <br /> One Project at a Time
           </h1>
           <div className="h-1 w-24 mt-10 bg-gray-500" />
-          <p className="mt-14 text-sm md:text-base">
+          <p className="mt-14 md:text-base font-open text-3xl" >
             Welcome to the EdgeReach Tech Blog! Here, we bridge the <br />
             gap between cutting-edge technology and real-world <br />
             business solutions. We're passionate about helping <br />

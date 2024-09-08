@@ -14,12 +14,12 @@ import Aboutus from './about';
 
 const LandingPage: React.FC = () => {
   return (
-    <div className='scroll-smooth overflow-auto h-full'>
+    <div className='scroll-smooth overflow-hidden h-full'>
     <Navbar />
     <HomePage />
     <Aboutus/>
     <Servicecontent />
-    <PortfolioPage />
+    {/* <PortfolioPage /> */}
     <OurTeamComponent/>
     <TestimonyPage />
     <OurBlogPage />

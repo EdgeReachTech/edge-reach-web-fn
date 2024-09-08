@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import IMG_77 from "../assets/serviceimage/IMG-77.jpg";
 import { FaPinterestP } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
@@ -6,11 +6,33 @@ import { TiSocialLinkedinCircular } from "react-icons/ti";
 import { CiInstagram } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
+interface AnimatedSectionProps {
+  children: ReactNode;
+}
+const AnimatedSection:React.FC<AnimatedSectionProps>  = ({ children }) => {
+  const { ref, inView } = useInView({
+    threshold: 0.2, 
+    triggerOnce: true,
+  });
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out transform ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-64"
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
 
 const Aboutus: React.FC = () => {
   return (
     <div className=" bg-gray-300 h-auto   relative pt-9 flex px-10 ">
-      <div className="left hidden md:block w-full md:w-1/2">
+      <div className=" hidden md:block w-full md:w-1/2 ml-20 ">
+      <AnimatedSection>
         <div className="relative">
           <div className="relative">
             <div className="bg-[#008080] w-48 h-40 rounded-lg relative m-10 left-20 top-20"></div>
@@ -45,27 +67,23 @@ const Aboutus: React.FC = () => {
             </div>
           </div>
         </div>
+      </AnimatedSection>
       </div>
-      <div className="right w-full md:w-auto ml-0 md:ml-20">
-        <h1 className="text-center font-bold mb-3">
+      <AnimatedSection>
+      <div className=" w-full md:w-auto ml-0 md:ml10">
+        <h1 className="text-center font-bold mb-3 font-loboto text-3xl">
           <span
             style={{
               background: "linear-gradient(90deg, #00FFFF 0%, #008080 100%)",
               display: "inline-block",
               padding: "0.5rem",
             }}
-            className="rounded-lg"
+            className="rounded-lg font-loboto"
           >
             ABOUT US
           </span>
         </h1>
-        <p
-          style={{
-            fontFamily: "Poetsen One, sans-serif",
-            // fontSize: '0.80rem',
-          }}
-          className="text-[13px] md:text-lg"
-        >
+        <p className="text-[13px] md:text-lg font-open">
           EdgeReach Tech, we are dynamic and innovative <br />
           technology company that is committed to delivering <br />
           cutting-edge solutions for our clients. With a team of <br />
@@ -76,20 +94,11 @@ const Aboutus: React.FC = () => {
         <hr className="border-4 w-20 border-[#333333] mt-4" />
         <br />
         <h1
-          style={{
-            fontFamily: "'Red Hat Text', sans-serif",
-            fontSize: "1rem",
-          }}
-          className="font-semibold mb-2"
+          className="font-semibold mb-2 font-loboto text-4xl"
         >
           Our mission
         </h1>
-        <p
-          style={{
-            fontFamily: "'Red Hat Text', sans-serif",
-            fontSize: "1rem",
-          }}
-        >
+        <p className="font-loboto">
           At EdgeReach Tech, our mission is to tackle real-life tech and
           <br />
           IT challenges head-on, leveraging our full capabilities to craft{" "}
@@ -106,20 +115,23 @@ const Aboutus: React.FC = () => {
             cursor: "pointer",
             fontSize: "1rem",
           }}
-          className="my-4 rounded-full"
+          className="my-4 rounded-full hover:shadow-2xl shadow-[#67c4c4] "
         >
           READ MORE
         </button>
       </div>
+      </AnimatedSection>
       <div
-        className="w-44 h-36 right-11 top-96 left-[1190px] absolute rounded-full"
+        className="w-44 h-36    absolute rounded-full top-2 -right-16 -z-0"
         style={{
           transform: "rotate(120.01deg)",
           background:
             "linear-gradient(197.07deg, #FFA500 40.58%, #FFE604 88.26%)",
         }}
+        
       />
     </div>
+     
   );
 };
 
