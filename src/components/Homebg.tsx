@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import IMG77 from "../assets/serviceimage/IMG-77.jpg";
-import IMG24 from "../assets/serviceimage/IMG-24.jpg";
-import IMG72 from "../assets/serviceimage/IMG-72.jpg";
-import IMG86 from "../assets/serviceimage/IMG-86.jpg";
-import IMG129 from "../assets/serviceimage/IMG-129.jpg";
+import IMG77 from "../assets/serviceimage/IMG-77.webp";
+import IMG24 from "../assets/serviceimage/IMG-24.webp";
+import IMG72 from "../assets/serviceimage/IMG-72.webp";
+import IMG86 from "../assets/serviceimage/IMG-86.webp";
+import IMG129 from "../assets/serviceimage/IMG-129.webp";
 
 const images = [IMG77, IMG24, IMG72, IMG86, IMG129];
 

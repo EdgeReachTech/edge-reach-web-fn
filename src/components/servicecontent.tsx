@@ -48,7 +48,7 @@ const Servicecontent: React.FC = () => {
           <div className="flex gap-4 flex-col md:flex-row  w-full  md:justify-center lg:justify-start">
             <div className="card mb-5">
               <img
-                src="web-app-dev.jpg"
+                src="web-app-dev.webp"
                 alt="web app"
                 className="w-full lg:w-80 h-48 object-cover rounded"
               />
@@ -61,7 +61,7 @@ const Servicecontent: React.FC = () => {
             </div>
             <div className="card mb-5">
               <img
-                src="/E-commerce.jpg"
+                src="/E-commerce.webp"
                 alt="E-commerce"
                 className="w-full lg:w-80 h-48 object-cover rounded"
               />
@@ -79,7 +79,7 @@ const Servicecontent: React.FC = () => {
           <div className="lg:flex gap-4 flex-wrap justify-center lg:justify-start">
             <div className="card mb-5">
               <img
-                src="/API.jpg"
+                src="/API.webp"
                 alt="API intergration"
                 className="w-full lg:w-80 h-48 object-cover rounded"
               />
@@ -93,7 +93,7 @@ const Servicecontent: React.FC = () => {
             </div>
             <div className="card mb-5">
               <img
-                src="/training.jpg"
+                src="/training.webp"
                 alt="web dev"
                 className="w-full lg:w-80 h-48 object-cover rounded"
               />
@@ -106,7 +106,7 @@ const Servicecontent: React.FC = () => {
             </div>
             <div className="card mb-5">
               <img
-                src="/web-dev.svg"
+                src="/web-dev.webp"
                 alt="web dev"
                 className="w-full lg:w-80 h-48 object-cover rounded"
               />

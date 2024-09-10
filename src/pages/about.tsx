@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import IMG_77 from "../assets/serviceimage/IMG-77.jpg";
+import IMG_77 from "../assets/serviceimage/IMG-77.webp";
 import { FaPinterestP } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { TiSocialLinkedinCircular } from "react-icons/ti";

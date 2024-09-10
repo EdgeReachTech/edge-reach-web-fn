@@ -1,5 +1,5 @@
-import IMG72 from "../assets/serviceimage/IMG-72.jpg";
-import IMG86 from "../assets/serviceimage/IMG-86.jpg";
+import IMG72 from "../assets/serviceimage/Jay d.webp";
+import IMG86 from "../assets/serviceimage/Rwigara.webp";
 import { FaChevronRight } from "react-icons/fa";
 import React from "react";
 
@@ -7,7 +7,7 @@ const OurTeamComponent:React.FC = () => {
   const teamMembers = [
     {
       id: 1,
-      img: '/Fiacre-CEO.jpg',
+      img: '/Fiacre-CEO.webp',
       name: "I. Fiacre ",
       role: "CHIEF EXECUTIVE OFFICER",
     },

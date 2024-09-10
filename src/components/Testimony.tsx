@@ -1,5 +1,5 @@
 import React from "react";
-import quote from "../assets/quote.png";
+import quote from "../assets/quote.webp";
 import edge from "../assets/edge.jpg";
 
 const Testimony: React.FC = () => {
@@ -31,7 +31,7 @@ const Testimony: React.FC = () => {
           <div className="absolute h-full w-full bg-gradient-to-l from-cyan-700 to-cyan-300 rounded-xl transform -translate-x-1/2 -translate-y-1/2 hidden lg:block" />
           <div className="relative h-full w-full bg-white rounded-xl overflow-hidden transform -translate-x-1/2 -translate-y-1/2 hidden lg:block shadow-lg">
             <img
-              src="/package-testmony.jpg"
+              src="/package-testmony.webp"
               alt="Photo"
               className="h-full w-full object-cover"
             />
