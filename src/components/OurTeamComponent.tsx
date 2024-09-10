@@ -33,13 +33,13 @@ const OurTeamComponent:React.FC = () => {
         </span>{" "}
         team
       </h1>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10 px-5 md:px-[100px]">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10 px-5 md:px-[100px] ">
         {teamMembers.map((member) => (
           <div key={member.id}>
             <img
               src={member.img}
               alt={`${member.name} - ${member.role}`}
-              className="w-[220px] h-[250px] object-cover rounded-lg"
+              className="w-[220px] h-[250px] object-cover rounded-lg cursor-pointer transition-all duration-300 ease-in-out hover:scale-105"
             />
             <div className="bg-slate-300 p-2 mx-5 rounded-lg relative -top-8 space-y-3">
               <p className="text-[15px] font-bold text-center uppercase text-sky-700">
@@ -52,7 +52,7 @@ const OurTeamComponent:React.FC = () => {
                 {[...Array(6)].map((_, i) => (
                   <div
                     key={i}
-                    className="border-2 border-black/50 w-2 h-2 rounded-full"
+                    className="border-2 border-black/50 w-2 h-2 rounded-full "
                   ></div>
                 ))}
               </div>

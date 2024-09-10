@@ -46,7 +46,7 @@ const Servicecontent: React.FC = () => {
             </div>
           </div>
           <div className="flex gap-4 flex-col md:flex-row  w-full  md:justify-center lg:justify-start">
-            <div className="card mb-5">
+            <div className="card mb-5 cursor-pointer transition-all duration-300 ease-in-out hover:scale-105">
               <img
                 src="web-app-dev.webp"
                 alt="web app"
@@ -59,7 +59,7 @@ const Servicecontent: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="card mb-5">
+            <div className="card mb-5 cursor-pointer transition-all duration-300 ease-in-out hover:scale-105">
               <img
                 src="/E-commerce.webp"
                 alt="E-commerce"
@@ -76,8 +76,8 @@ const Servicecontent: React.FC = () => {
         </div>
 
         <div className="mt-4 lg:ml-32 lg:flex flex-col lg:pt-2 gap-10 ml-0">
-          <div className="lg:flex gap-4 flex-wrap justify-center lg:justify-start">
-            <div className="card mb-5">
+          <div className="lg:flex gap-4 flex-wrap justify-center lg:justify-start ">
+            <div className="card mb-5 cursor-pointer transition-all duration-300 ease-in-out hover:scale-105">
               <img
                 src="/API.webp"
                 alt="API intergration"
@@ -91,7 +91,7 @@ const Servicecontent: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="card mb-5">
+            <div className="card mb-5 cursor-pointer transition-all duration-300 ease-in-out hover:scale-105">
               <img
                 src="/training.webp"
                 alt="web dev"
@@ -104,7 +104,7 @@ const Servicecontent: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="card mb-5">
+            <div className="card mb-5 cursor-pointer transition-all duration-300 ease-in-out hover:scale-105">
               <img
                 src="/web-dev.webp"
                 alt="web dev"
