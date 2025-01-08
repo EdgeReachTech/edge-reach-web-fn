@@ -7,6 +7,8 @@ import { CiInstagram } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
+
 interface AnimatedSectionProps {
   children: ReactNode;
 }
@@ -29,6 +31,9 @@ const AnimatedSection:React.FC<AnimatedSectionProps>  = ({ children }) => {
 };
 
 const Aboutus: React.FC = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className=" bg-gray-300 h-auto   relative pt-9 flex px-10 ">
       <div className=" hidden md:block w-full md:w-1/2 ml-20 ">
@@ -116,6 +121,8 @@ const Aboutus: React.FC = () => {
             fontSize: "1rem",
           }}
           className="my-4 rounded-full hover:shadow-2xl shadow-[#67c4c4] "
+
+          onClick={()=>navigate('/aboutus')}
         >
           READ MORE
         </button>

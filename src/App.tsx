@@ -1,6 +1,6 @@
 
 import './index.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Router } from 'react-router-dom'
 import LandingPage from './pages/landingPage'
 import React from 'react'
 import LoginPage from './pages/LoginPage'
@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify'
 import Verify from './pages/Verify'
 import MessagePage from './pages/MessagePage'
 import MessageContextAPI  from './context/messageAuth'
+import AboutUsPage from './pages/AboutUsPage'
 const App:React.FC = () =>{
 
   return (
@@ -24,6 +25,7 @@ const App:React.FC = () =>{
       <Route path='/register' Component={SignUpPage} />
       <Route path='/verify/:token' Component={Verify} />
       <Route path='/message' Component={MessagePage} />
+      <Route path='/aboutus' Component={AboutUsPage}/>
     </Routes>
     </BrowserRouter>
     </MessageContextAPI>
