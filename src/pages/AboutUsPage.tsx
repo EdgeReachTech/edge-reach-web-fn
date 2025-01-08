@@ -11,11 +11,12 @@ import { CiInstagram } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const AboutUsPage: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
-    <div className="flex flex-col relative bg-[#C0C0C0] p-4 md:p-16 w-full min-h-screen">
+    <><Navbar /><div className="flex flex-col relative bg-[#C0C0C0] p-4 md:p-16 w-full min-h-screen">
       <div className="font-loboto text-[15px] md:text-[25px] font-bold ml-5 md:ml-10">
         <span className="bg-gradient-to-r from-[#00FFFF] to-[#008080] p-1 rounded-sm">
           About
@@ -56,8 +57,7 @@ const AboutUsPage: React.FC = () => {
           <div className="relative bg-[#008080] w-8 md:w-40 h-[200px] md:h-[450px] top-5 md:top-10 rounded-lg"></div>
           <div
             style={{
-              background:
-                "linear-gradient(270deg, #FFFFFF 20.25%, #999999 93.37%)",
+              background: "linear-gradient(270deg, #FFFFFF 20.25%, #999999 93.37%)",
             }}
             className="w-8 md:w-40 h-[210px] md:h-[300px] absolute rounded-lg top-[110px] md:top-[300px] left-[10px] md:left-[60px] z-[1] "
           ></div>
@@ -102,8 +102,7 @@ const AboutUsPage: React.FC = () => {
             <img
               src={uniquenessIcon}
               alt="strategic_Icon"
-              className="w-4 h-4"
-            />
+              className="w-4 h-4" />
             <h1 className="font-loboto font-bold text-[15px]">
               PROBLEM STATEMENT
             </h1>
@@ -131,8 +130,7 @@ const AboutUsPage: React.FC = () => {
             <img
               src={leaderShipIcon}
               alt="strategic_Icon"
-              className="w-4 h-4"
-            />
+              className="w-4 h-4" />
             <h1 className="font-loboto font-bold text-[15px]">OUR MISSION</h1>
           </div>
           <div className="flex flex-row gap-4">
@@ -213,19 +211,19 @@ const AboutUsPage: React.FC = () => {
           </p>
         </div>
         <div className="flex flex-col p-2 mt-2 md:mt-6 w-80 md:w-96 bg-gradient-to-t from-[#FFA500] to-[#FFE600] rounded-lg shadow-md">
-            <h2 className="mb-1 text-center">Follow Us</h2>
+          <h2 className="mb-1 text-center">Follow Us</h2>
 
-            <div className="flex flex-row gap-2 justify-center items-center">
-              <FaPinterestP className="hover:text-white" />
-              <IoLogoGithub className="hover:text-white"/>
-              <TiSocialLinkedinCircular className="hover:text-white"/>
-              <CiInstagram className="hover:text-white"/>
-              <FaXTwitter className="hover:text-white"/>
-              <FaFacebookF className="hover:text-white"/>
-            </div>
+          <div className="flex flex-row gap-2 justify-center items-center">
+            <FaPinterestP className="hover:text-white" />
+            <IoLogoGithub className="hover:text-white" />
+            <TiSocialLinkedinCircular className="hover:text-white" />
+            <CiInstagram className="hover:text-white" />
+            <FaXTwitter className="hover:text-white" />
+            <FaFacebookF className="hover:text-white" />
           </div>
+        </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

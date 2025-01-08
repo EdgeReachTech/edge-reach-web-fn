@@ -30,19 +30,19 @@ const Navbar: React.FC = () => {
             isMenuOpen ? "flex" : "hidden"
           } transition-all duration-300 ease-in-out flex-col`}
         >
-          <a href="#home" className="p-4 lg:px-4 lg:py-2 hover:underline">
+          <a href="/" className="p-4 lg:px-4 lg:py-2 hover:underline">
             Home
           </a>
-          <a href="#about" className="p-4 lg:px-4 lg:py-2 hover:underline">
+          <a href="/about" className="p-4 lg:px-4 lg:py-2 hover:underline">
             About
           </a>
           <a href="#services" className="p-4 lg:px-4 lg:py-2 hover:underline">
             Services
           </a>
-          <a href="#projects" className="p-4 lg:px-4 lg:py-2 hover:underline">
+          <a href="/project" className="p-4 lg:px-4 lg:py-2 hover:underline">
             Projects
           </a>
-          <a href="#blogs" className="p-4 lg:px-4 lg:py-2 hover:underline">
+          <a href="/blogs" className="p-4 lg:px-4 lg:py-2 hover:underline">
             Blogs
           </a>
           <a href="#contact" className="p-4 lg:px-4 lg:py-2 hover:underline">

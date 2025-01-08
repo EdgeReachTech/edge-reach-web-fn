@@ -1,14 +1,17 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 
 const blogPage = () => {
   return (
+    <>
+    <Navbar />
     <div className="bg-[#C0C0C0]">
       <div>
         <p className="text-[28px] p-5 font-bold">
           <span className="bg-[#00FFFF] rounded-[10px_0px_0px_10px] px-[5px]">
-            PRO
+            BLOG
           </span>
-          JECTS PAGE
+           PAGE
         </p>
       </div>
 
@@ -20,8 +23,7 @@ const blogPage = () => {
         <img
           src="https://images.pexels.com/photos/29637182/pexels-photo-29637182/free-photo-of-artistic-portrait-of-dancer-with-floral-headpiece.jpeg"
           alt=""
-          className="w-[90%] mx-auto border-[7px] border-yellow-500 h-[500px] object-cover rounded-lg flex-shrink-0"
-        />
+          className="w-[90%] mx-auto border-[7px] border-yellow-500 h-[500px] object-cover rounded-lg flex-shrink-0" />
         <div className="space-y-5 px-2 lg:px-5">
           <h3 className="text-xl font-bold text-center">
             From Classroom to Boardroom: How Edgereach Tech Is Solving Real-Life
@@ -161,7 +163,7 @@ const blogPage = () => {
           NEXT ARTICLE
         </button>
       </div>
-    </div>
+    </div></>
   );
 };
 
