@@ -29,8 +29,8 @@ const App: React.FC = () => {
             <Route path="/message" Component={MessagePage} />
 
             {/* **_Happy */}
-            <Route path="/blogPage/:id" Component={blogPage} />
-            <Route path="/projectPage/:id" Component={projectPage} />
+            <Route path="/blog/id" Component={blogPage} />
+            <Route path="/project/:id" Component={projectPage} />
             {/* _** */}
           </Routes>
         </BrowserRouter>
