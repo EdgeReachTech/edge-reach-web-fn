@@ -33,3 +33,4 @@ jobs:
             git pull origin develop
             npm install
             pm2 restart vite-preview
+            debug: true
