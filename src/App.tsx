@@ -12,6 +12,9 @@ import MessageContextAPI from "./context/messageAuth";
 import projectPage from "./pages/projectPage";
 import blogPage from "./pages/blogPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import OurBlog from "./pages/OurBlog"
+import BlogDetails from "./pages/BlogDetails";
+
 const App: React.FC = () => {
   return (
     <AuthContextAPI>
@@ -28,8 +31,9 @@ const App: React.FC = () => {
             <Route path="/register" Component={SignUpPage} />
             <Route path="/verify/:token" Component={Verify} />
             <Route path="/message" Component={MessagePage} />
-            <Route path="/about" Component={AboutUsPage} />
-
+            <Route path="/aboutus" Component={AboutUsPage} />
+            <Route path="/OurBlog" Component={OurBlog}/>
+            <Route path="/BlogDetails" Component={BlogDetails} />
             {/* **_Happy */}
             <Route path="/blog/id" Component={blogPage} />
             <Route path="/project/:id" Component={projectPage} />
