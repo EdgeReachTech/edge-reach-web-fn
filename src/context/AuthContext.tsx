@@ -45,7 +45,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Login = async (userData: object) => {
     try {
       const response = await axios.post(
-        "https://adgereachtech-web-bn.onrender.com/user/login",
+        "https://edgereachtech.com/user/login",
         userData
       );
       localStorage.setItem("token", response.data.token);

@@ -28,9 +28,9 @@ const Homebg: React.FC = () => {
   }, []);
 
   return (
-    <div className="absolute lg:w-screen h-screen overflow-hidden bg-gray-300">
+    <div className="absolute w-screen h-screen overflow-hidden bg-gray-300">
       <div
-        className=" hidden lg:flex transition-transform duration-1000 ease-in-out"
+        className=" flex transition-transform duration-1000 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, index) => (
