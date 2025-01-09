@@ -33,5 +33,6 @@ jobs:
             cd /var/www/edge-reach-web-fn
             git pull origin develop
             npm install
+            npm run build
             pm2 restart vite-preview
-            debug: true
+          port: 2200
