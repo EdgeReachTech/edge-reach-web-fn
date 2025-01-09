@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, ReactNode, useContext, useState } from "react";
 
 interface Message {
+  _id:string
   sender: string;
   receiver: string;
   content: string;
@@ -10,7 +11,7 @@ interface Message {
 }
 
 interface MessageContextData {
-  message: Message[] | null;
+  message: Message[];
   getMessage: (token: string) => Promise<void>;
 }
 
@@ -23,7 +24,7 @@ export const messageContext = createContext<MessageContextData>(
 );
 
 const MessageContextAPI: React.FC<MessageProviderProps> = ({ children }) => {
-  const [message, setMessage] = useState<Message[] | null>(null);
+  const [message, setMessage] = useState<Message[] >([]);
 
   const getMessage = async (token: string) => {
     try {
@@ -38,8 +39,9 @@ const MessageContextAPI: React.FC<MessageProviderProps> = ({ children }) => {
       );
       setMessage(response.data);
     } catch (error) {
-      console.log(error);
-      setMessage(null);
+    
+      setMessage([]);
+      throw error
     }
   };
 

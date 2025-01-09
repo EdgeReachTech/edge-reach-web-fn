@@ -55,8 +55,7 @@ const MessagePage: React.FC = () => {
                 </div>
               </div>
               <div className="">
-                {message?.map((message) => (
-                  //@ts-ignore
+              {message.map((message) => (
                   <div  key={message._id} className="flex flex-row  mt-3">
                     <img
                       src="https://www.svgrepo.com/show/384674/account-avatar-profile-user-11.svg"
