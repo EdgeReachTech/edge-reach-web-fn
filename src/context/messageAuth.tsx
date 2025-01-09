@@ -29,7 +29,7 @@ const MessageContextAPI: React.FC<MessageProviderProps> = ({ children }) => {
   const getMessage = async (token: string) => {
     try {
       const response = await axios.get<Message[]>(
-        "https://adgereachtech-web-bn.onrender.com/message/messages/",
+        "https://edgereachtech.com/message/messages/",
         {
           headers: {
             "Content-Type": "application/json",
