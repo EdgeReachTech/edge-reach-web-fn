@@ -21,6 +21,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./"
           target: "/var/www/edge-reach-web-fn"
+          port: 2200
 
       - name: Restart Application
         uses: appleboy/ssh-action@v0.1.4
@@ -33,3 +34,4 @@ jobs:
             git pull origin develop
             npm install
             pm2 restart vite-preview
+            debug: true
