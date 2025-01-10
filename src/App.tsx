@@ -15,6 +15,7 @@ import Verify from "./pages/Verify";
 import OurBlog from "./pages/OurBlog";
 
 import project from "./components/project";
+import OurBlogPage from "./pages/OurBlogPage";
 const App: React.FC = () => {
   return (
     <AuthContextAPI >
@@ -39,6 +40,7 @@ const App: React.FC = () => {
             <Route path="/blog/id" Component={blogPage} />
             <Route path="/project/:id" Component={projectPage} />
             <Route path="/project" Component={project} />
+            <Route path="/blogs" Component={OurBlogPage} />
             {/* _** */}
           </Routes>
         </BrowserRouter>
