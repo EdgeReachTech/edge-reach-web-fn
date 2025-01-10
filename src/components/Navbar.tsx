@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
       </div>
       {isMenuOpen && (
         <div
-          className="fixed top-0 left-0 w-full h-full bg-black opacity-50 lg:hidden"
+          className="fixed top-0 left-0  bg-black opacity-50 lg:hidden"
           onClick={toggleMenu}
         ></div>
       )}
