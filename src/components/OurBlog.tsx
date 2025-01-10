@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import image1 from "../assets/image1.webp";
 import image2 from "../assets/image2.webp";
 import image3 from "../assets/image3.webp";
+import { useNavigate } from "react-router-dom";
 
 const OurBlog: React.FC = () => {
+  const navigate = useNavigate();
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
@@ -55,7 +58,7 @@ const OurBlog: React.FC = () => {
             businesses like yours thrive in today's digital landscape.
           </p>
           <div className="mt-5 h-10 w-36 bg-gradient-to-r from-orange-600 to-yellow-400 rounded-3xl flex justify-center items-center cursor-pointer hover:bg-gradient-to-l">
-            <h5 className="font-bold text-[12px]">VIEW ALL BLOGS</h5>
+            <h5 className="font-bold text-[12px]" onClick={()=> navigate("/ourblog")}>VIEW ALL BLOGS</h5>
           </div>
         </div>
         <div className="relative w-full md:w-1/2 flex items-center justify-center">
