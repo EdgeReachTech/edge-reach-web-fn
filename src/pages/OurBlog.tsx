@@ -9,6 +9,7 @@ import { CiInstagram } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
+import Navbar from "../components/Navbar";
 
 const OurBlog: React.FC = () => {
   const cards = [
@@ -71,7 +72,7 @@ const OurBlog: React.FC = () => {
   ];
 
   return (
-    <div className="relative bg-[#C0C0C0] w-full min-h-screen p-8 md:p-10 lg:p-16">
+    <><Navbar /><div className="relative bg-[#C0C0C0] w-full min-h-screen p-8 md:p-10 lg:p-16">
       <div className="font-bold font-loboto text-[20px]">
         <h2>
           <span className="bg-gradient-to-t from-[#00FFFF] to-[#008080] p-1 rounded-md">
@@ -92,51 +93,50 @@ const OurBlog: React.FC = () => {
       </div>
 
       <div className="flex flex-col mt-8 gap-y-14 md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 md:gap-x-1 lg:gap-x-1 md:gap-y-10 lg:gap-y-16 lg:max-w-[1400px] md:mt-10 lg:mt-20 md:ml-10 lg:ml-16">
-  {cards.map((card) => (
-    <div
-      key={card.id}
-      className="bg-white w-[330px] h-[370px] rounded-lg overflow-hidden ease-in-out transition-transform duration-300 hover:scale-105"
-    >
-      <img
-        src={card.image}
-        alt={card.descr}
-        className="w-full h-48 object-cover hover:opacity-60"
-      />
-      <div className="p-4 flex flex-col h-[calc(100%-192px)] justify-between">
-        <div className="flex flex-row gap-2">
-        <div className="h-[2px] w-[25px] mt-14 bg-gradient-to-r from-[#FFA500] to-[#FFE600] rounded-md"/>
-          <div className="flex flex-col max-w-[250px] p-2">
-          <p className="text-sm font-loboto text-gray-500">{card.date}</p>
-          <p className="mt-2 text-[13px] font-bold font-loboto text-gray-800">
-            {card.descr}
-          </p>
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className="bg-white w-[330px] h-[370px] rounded-lg overflow-hidden ease-in-out transition-transform duration-300 hover:scale-105"
+          >
+            <img
+              src={card.image}
+              alt={card.descr}
+              className="w-full h-48 object-cover hover:opacity-60" />
+            <div className="p-4 flex flex-col h-[calc(100%-192px)] justify-between">
+              <div className="flex flex-row gap-2">
+                <div className="h-[2px] w-[25px] mt-14 bg-gradient-to-r from-[#FFA500] to-[#FFE600] rounded-md" />
+                <div className="flex flex-col max-w-[250px] p-2">
+                  <p className="text-sm font-loboto text-gray-500">{card.date}</p>
+                  <p className="mt-2 text-[13px] font-bold font-loboto text-gray-800">
+                    {card.descr}
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row items-center gap-1 ml-10">
+                <p className="text-sm text-blue-500 cursor-pointer hover:underline">
+                  Read Full Post
+                </p>
+                <FaArrowRight className="w-[13px] h-[13px] text-blue-500 " />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-row items-center gap-1 ml-10">
-          <p className="text-sm text-blue-500 cursor-pointer hover:underline">
-            Read Full Post
-          </p>
-          <FaArrowRight className="w-[13px] h-[13px] text-blue-500 "/>
-        </div>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
 
 
       <div className="flex flex-col  lg:justify-center lg:items-center lg:ml-[600px] mr-4 p-2 mt-10 lg:w-96 bg-gradient-to-t from-[#FFA500] to-[#FFE600] rounded-lg shadow-md">
-                <h2 className="mb-1 text-center">Follow Us</h2>
-      
-                <div className="flex flex-row gap-2 justify-center items-center">
-                  <FaPinterestP className="hover:text-white" />
-                  <IoLogoGithub className="hover:text-white" />
-                  <TiSocialLinkedinCircular className="hover:text-white" />
-                  <CiInstagram className="hover:text-white" />
-                  <FaXTwitter className="hover:text-white" />
-                  <FaFacebookF className="hover:text-white" />
-                </div>
-              </div>
-    </div>
+        <h2 className="mb-1 text-center">Follow Us</h2>
+
+        <div className="flex flex-row gap-2 justify-center items-center">
+          <FaPinterestP className="hover:text-white" />
+          <IoLogoGithub className="hover:text-white" />
+          <TiSocialLinkedinCircular className="hover:text-white" />
+          <CiInstagram className="hover:text-white" />
+          <FaXTwitter className="hover:text-white" />
+          <FaFacebookF className="hover:text-white" />
+        </div>
+      </div>
+    </div></>
   );
 };
 
