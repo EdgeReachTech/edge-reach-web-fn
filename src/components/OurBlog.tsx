@@ -38,7 +38,7 @@ const OurBlog: React.FC = () => {
 
   return (
     <div className="relative  p-5 md:p-10 bg-slate-300">
-      <div className="flex flex-col md:flex-row lg:justify-center px-32">
+      <div className="flex flex-col md:flex-row lg:justify-center md:px-4 lg:px-32">
         <div className="w-full md:w-1/2 mb-10 md:mb-0">
           <h3 className="font-bold text-2xl md:text-4xl font-loboto">
             <span className="mr-2 bg-gradient-to-l from-cyan-700 to-cyan-400 p-1 text-white rounded-lg ">
