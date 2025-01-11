@@ -11,8 +11,10 @@ jobs:
 
     steps:
       - name: Restrict Workflow to Specific Users
-        if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
-        run: 'echo "Workflow initiated by authorized user: ${{ github.actor }}"'
+        if: ${{ github.actor != 'rodriguecyber' && github.actor != 'EdgeReachTech' }}
+        run: |
+          echo "Unauthorized user: ${{ github.actor }}. Exiting workflow."
+          exit 1
 
       - name: Checkout code
         if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
