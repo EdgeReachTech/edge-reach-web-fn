@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import image1 from "../assets/image1.webp";
 import image2 from "../assets/image2.webp";
 import image3 from "../assets/image3.webp";
+import { useNavigate } from "react-router-dom";
 
 const OurBlog: React.FC = () => {
+  const navigate = useNavigate();
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
@@ -35,7 +38,7 @@ const OurBlog: React.FC = () => {
 
   return (
     <div className="relative  p-5 md:p-10 bg-slate-300">
-      <div className="flex flex-col md:flex-row lg:justify-center px-32">
+      <div className="flex flex-col md:flex-row lg:justify-center md:px-4 lg:px-32">
         <div className="w-full md:w-1/2 mb-10 md:mb-0">
           <h3 className="font-bold text-2xl md:text-4xl font-loboto">
             <span className="mr-2 bg-gradient-to-l from-cyan-700 to-cyan-400 p-1 text-white rounded-lg ">
@@ -55,7 +58,7 @@ const OurBlog: React.FC = () => {
             businesses like yours thrive in today's digital landscape.
           </p>
           <div className="mt-5 h-10 w-36 bg-gradient-to-r from-orange-600 to-yellow-400 rounded-3xl flex justify-center items-center cursor-pointer hover:bg-gradient-to-l">
-            <h5 className="font-bold text-[12px]">VIEW ALL BLOGS</h5>
+            <h5 className="font-bold text-[12px]" onClick={()=> navigate("/ourblog")}>VIEW ALL BLOGS</h5>
           </div>
         </div>
         <div className="relative w-full md:w-1/2 flex items-center justify-center">

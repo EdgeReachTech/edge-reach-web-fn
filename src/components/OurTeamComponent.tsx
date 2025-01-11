@@ -1,5 +1,4 @@
 import IMG72 from "../assets/serviceimage/Jay d.webp";
-import IMG86 from "../assets/serviceimage/Rwigara.webp";
 import { FaChevronRight } from "react-icons/fa";
 import React from "react";
 
@@ -13,7 +12,7 @@ const OurTeamComponent:React.FC = () => {
     },
     {
       id: 2,
-      img: IMG86,
+      img: '/pm.webp',
       name: "R. Rodrigue ",
       role: "Project Manager",
     },

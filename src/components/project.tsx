@@ -1,34 +1,35 @@
 import React from 'react'
-import bigpc from '../assets/serviceimage/bigpc.png';
-import portfolio1 from '../assets/serviceimage/portfolio1.png';
-import portfolio2 from '../assets/serviceimage/portfolio2.png';
-import portfolio3 from '../assets/serviceimage/portfolio3.png';
+import bigpc from '../assets/bigpc.png';
+import portfolio1 from '../assets/portfolio1.png';
+import portfolio2 from '../assets/portfolio2.png';
+import portfolio3 from '../assets/portfolio3.png';
+import Navbar from './Navbar';
 
 
 
 const project: React.FC = ()  => {
   return (
-    <div className="bg-gray-100 min-h-full pt-20">
+    <><Navbar />
+    <div className="bg-gray-100 min-h-full pt-40">
       <div className="container mx-auto px-4">
-      <div className="mb-6 lg:mb-0 lg:w-1/2">
-            <h2 className="text-3xl font-bold text-gray-900">
-              PORT<span className="text-yellow-500">FOLIO</span>
-            </h2>
-            <p className="text-xl text-gray-700 mt-4">Experienced in Gallery</p>
-          </div>
-        
+        <div className="mb-6 lg:mb-0 lg:w-1/2">
+          <h2 className="text-3xl font-bold text-gray-900">
+            PORT<span className="text-yellow-500">FOLIO</span>
+          </h2>
+          <p className="text-xl text-gray-700 mt-4">Experienced in Gallery</p>
+        </div>
+
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between bg-gray-200 p-8 rounded-lg shadow-md">
-          
-         
+
+
           <div className="mb-6 lg:mb-0 lg:w-1/2   flex justify-center lg:justify-start">
             <img
               src={bigpc}
               alt="Project Preview"
-              className="rounded-lg shadow-lg max-w-full lg:max-w-[90%] lg:max-h-[160%]"
-            />
+              className="rounded-lg shadow-lg max-w-full lg:max-w-[90%] lg:max-h-[160%]" />
           </div>
 
-          
+
           <div className="lg:w-1/2 grid grid-cols-1 gap-6">
             {[portfolio1, portfolio2, portfolio3].map((image, index) => (
               <div
@@ -52,7 +53,7 @@ const project: React.FC = ()  => {
           </button>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
