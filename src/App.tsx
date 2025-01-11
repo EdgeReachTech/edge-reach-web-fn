@@ -18,6 +18,7 @@ import project from "./components/project";
 
 const App: React.FC = () => {
   return (
+ 
     <AuthContextAPI >
       <MessageContextAPI>
         <BrowserRouter>
@@ -27,21 +28,19 @@ const App: React.FC = () => {
             hideProgressBar
           />
           
-            <Routes>
-              <Route path="/" Component={LandingPage} />
-              <Route path="/login" Component={LoginPage} />
-              <Route path="/register" Component={SignUpPage} />
-              <Route path="/verify/:token" Component={Verify} />
-              <Route path="/message" Component={MessagePage} />
-              <Route path="/aboutus" Component={AboutUsPage} />
-              <Route path="/blogs" Component={OurBlog} />
+        <Routes>
+  <Route path="/" Component={LandingPage} />
+  <Route path="/login" Component={LoginPage} />
+  <Route path="/register" Component={SignUpPage} />
+  <Route path="/verify/:token" Component={Verify} />
+  <Route path="/message" Component={MessagePage} />
+  <Route path="/aboutus" Component={AboutUsPage} />
+  <Route path="/blogs" Component={OurBlog} />
+  <Route path="/blog/id" Component={blogPage} />
+  <Route path="/project/:id" Component={projectPage} />
+  <Route path="/project" Component={project} />
+</Routes>
 
-            {/* **_Happy */}
-            <Route path="/blog/id" Component={blogPage} />
-            <Route path="/project/:id" Component={projectPage} />
-            <Route path="/project" Component={project} />
-            {/* _** */}
-          </Routes>
         </BrowserRouter>
       </MessageContextAPI>
     </AuthContextAPI>
