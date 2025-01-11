@@ -11,9 +11,9 @@ import ProgressSection from '../components/ProgressSection';
 
 const Adminpage: React.FC = () => {
   return (
-    <div className="bg-[#C0C0C0] flex flex-col md:flex-row  ">
+    <div className="bg-[#C0C0C0] flex flex-col md:flex-row h-fit ">
       <MainSidebar  />
-      <div className="w-full flex flex-col items-center p-4">
+      <div className="w-full flex flex-col items-center ">
         <WelcPanelBoardmain />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6 rounded-lg shadow-lg w-full ">
           {/* Left Section */}

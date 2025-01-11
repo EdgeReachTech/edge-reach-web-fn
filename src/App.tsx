@@ -42,8 +42,7 @@ const App: React.FC = () => {
   <Route path="/project/:id" Component={projectPage} />
   <Route path="/project" Component={project} />
   <Route path="/adminpage" Component={Adminpage} />
-  <Route path="/admin" Component={BoardMain} />
-</Routes>
+ </Routes>
 
         </BrowserRouter>
       </MessageContextAPI>

@@ -22,7 +22,7 @@ const MainSidebar = () => {
     </button>
 
    
-    <div className={`w-64 h-screen min-h-[920px] bg-gray-800 text-white flex flex-col   transition-transform duration-300 ease-in-out z-40
+    <div className={`w-64 h-screen min-h-[880px] bg-gray-800 text-white flex flex-col   transition-transform duration-300 ease-in-out z-40
       ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
       
       <div className="bg-gray-800 gap-3 mt-[-3.5em] cursor-pointer font-bold  flex justify-center items-center pt-4">
