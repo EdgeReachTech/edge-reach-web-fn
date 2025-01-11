@@ -1,16 +1,14 @@
 import React from "react";
-import image from "../assets/hero image 4.webp";
+import { CiInstagram } from "react-icons/ci";
+import { FaFacebookF, FaPinterestP } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { IoLogoGithub } from "react-icons/io";
+import { TiSocialLinkedinCircular } from "react-icons/ti";
 import goalIcon from "../assets/goal.png";
+import image from "../assets/hero image 4.webp";
 import leaderShipIcon from "../assets/leadership.png";
 import strategicIcon from "../assets/strategic-vision.png";
 import uniquenessIcon from "../assets/uniqueness.png";
-import { FaPinterestP } from "react-icons/fa";
-import { IoLogoGithub } from "react-icons/io";
-import { TiSocialLinkedinCircular } from "react-icons/ti";
-import { CiInstagram } from "react-icons/ci";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaFacebookF } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const AboutUsPage: React.FC = () => {
@@ -30,7 +28,7 @@ const AboutUsPage: React.FC = () => {
           <p className="text-[13px] md:text-[15px] font-loboto leading-relaxed text-gray-800">
             Edgereach Tech was born out of a shared vision among a group of
             passionate students from the University of Rwanda, studying Business
-            Information Technology BIT. During our second year, we recognized a
+            Information Technology, BIT!!. During our second year, we recognized a
             critical gap: numerous IT challenges in our communities remained
             unsolved, and many systems lacked creativity and the ability to
             address real-world needs.

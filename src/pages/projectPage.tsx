@@ -36,8 +36,8 @@ const projectPage = () => {
             <p>
               We designed, developed, hosted, and currently maintain the
               official website for CyberPro Group, a leading company based in
-              Canada. This project reflects our ability to create user-friendly,
-              visually appealing, and highly functional digital solutions
+              Canada and US. This project reflects our ability to create user-friendly,
+              visually-appealing, and highly functional digital solutions
               tailored to our client’s needs.
             </p>
           </div>

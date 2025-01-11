@@ -1,0 +1,45 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - develop  # prod repo
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Restrict Workflow to Specific Users
+        if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
+        run: 'echo "Workflow initiated by authorized user: ${{ github.actor }}"'
+
+      - name: Checkout code
+        if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
+        uses: actions/checkout@v3
+
+      - name: Copy files to VPS
+        if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
+        uses: appleboy/scp-action@v0.1.5
+        with:
+          host: 77.37.124.116
+          username: fiacre
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "./"
+          target: "/var/www/edge-reach-web-fn"
+          port: 2200
+
+      - name: Restart Application
+        if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: 77.37.124.116
+          username: fiacre
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/edge-reach-web-fn
+            git pull origin develop
+            npm install
+            npm run build
+            pm2 restart vite-preview
+          port: 2200
