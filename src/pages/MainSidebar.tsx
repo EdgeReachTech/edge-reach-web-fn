@@ -13,16 +13,16 @@ const MainSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
   return (
-    <div className="max-md:z-50" >
+    <div className="max-md:z-50 " >
     <button 
-      className="md:hidden fixed  max-sm:ml-[-.7em] top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded"
+      className="md:hidden fixed  max-sm:ml-[-.7em] top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded "
       onClick={toggleSidebar}
     >
       <FontAwesomeIcon icon={faBars} size="lg" />
     </button>
 
    
-    <div className={`w-64 h-screen bg-gray-800 text-white flex flex-col   transition-transform duration-300 ease-in-out z-40
+    <div className={`w-64 h-screen min-h-[920px] bg-gray-800 text-white flex flex-col   transition-transform duration-300 ease-in-out z-40
       ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
       
       <div className="bg-gray-800 gap-3 mt-[-3.5em] cursor-pointer font-bold  flex justify-center items-center pt-4">
