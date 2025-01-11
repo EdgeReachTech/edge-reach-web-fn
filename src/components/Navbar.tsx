@@ -18,7 +18,9 @@ const Navbar: React.FC = () => {
     <div className="fixed top-10 z-50 w-full px-4 lg:px-10 ">
       <div className="lg:bg-white  shadow-md lg:shadow-none lg:flex lg:flex-row lg:justify-between lg:items-center ">
         <div className="flex justify-between items-center mx-2 px-4 ">
-          <h5 className="font-extrabold hidden lg:block text-teal-950">EDGE-REACH TECH</h5>
+          <h5 className="font-extrabold hidden lg:block text-teal-950">
+            <a href="/">EDGE-REACH TECH</a>
+          </h5>
           <FontAwesomeIcon
             icon={isMenuOpen ? faTimes : faBars}
             className="text-black text-3xl fixed left-4 top-4 lg:hidden cursor-pointer"
@@ -45,7 +47,7 @@ const Navbar: React.FC = () => {
           <a href="/blogs" className="p-4 lg:px-4 lg:py-2 hover:underline">
             Blogs
           </a>
-          <a href="#contact" className="p-4 lg:px-4 lg:py-2 hover:underline">
+          <a href="/contact" className="p-4 lg:px-4 lg:py-2 hover:underline">
             Contact
           </a>
         </div>
