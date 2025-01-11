@@ -6,7 +6,6 @@ import MessageContextAPI from "./context/messageAuth";
 import "./index.css";
 import AboutUsPage from "./pages/AboutUsPage";
 import blogPage from "./pages/blogPage";
-import BoardMain from "./pages/BoardMain";
 import LandingPage from "./pages/landingPage";
 import LoginPage from "./pages/LoginPage";
 import MessagePage from "./pages/MessagePage";
@@ -25,7 +24,7 @@ const App: React.FC = () => {
             autoClose={3000}
             hideProgressBar
           />
-           <BoardMain>
+          
             <Routes>
               <Route path="/" Component={LandingPage} />
               <Route path="/login" Component={LoginPage} />
@@ -39,7 +38,7 @@ const App: React.FC = () => {
               <Route path="/project/:id" Component={projectPage} />
               {/* _** */}
             </Routes>
-            </BoardMain>
+        
         </BrowserRouter>
       </MessageContextAPI>
     </AuthContextAPI>
