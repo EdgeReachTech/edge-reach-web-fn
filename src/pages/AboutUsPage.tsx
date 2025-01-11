@@ -1,16 +1,14 @@
 import React from "react";
-import image from "../assets/hero image 4.webp";
+import { CiInstagram } from "react-icons/ci";
+import { FaFacebookF, FaPinterestP } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { IoLogoGithub } from "react-icons/io";
+import { TiSocialLinkedinCircular } from "react-icons/ti";
 import goalIcon from "../assets/goal.png";
+import image from "../assets/hero image 4.webp";
 import leaderShipIcon from "../assets/leadership.png";
 import strategicIcon from "../assets/strategic-vision.png";
 import uniquenessIcon from "../assets/uniqueness.png";
-import { FaPinterestP } from "react-icons/fa";
-import { IoLogoGithub } from "react-icons/io";
-import { TiSocialLinkedinCircular } from "react-icons/ti";
-import { CiInstagram } from "react-icons/ci";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaFacebookF } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const AboutUsPage: React.FC = () => {
