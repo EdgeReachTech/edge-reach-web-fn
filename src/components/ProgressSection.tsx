@@ -5,7 +5,7 @@ const ProgressSection = () => {
   const progress = 70; // Example progress percentage
 
   return (
-    <div className="bg-gray-50 rounded-lg p-4 shadow h-fit border-spacing-2 border-2 border-black">
+    <div className="bg-gray-200 rounded-lg p-4 shadow h-fit border-spacing-2 border-2 border-black">
       <h3 className="text-lg font-semibold mb-4">Progress</h3>
       <div className="relative w-full h-48 flex items-center justify-center">
         <svg className="w-32 h-32" viewBox="0 0 36 36">
