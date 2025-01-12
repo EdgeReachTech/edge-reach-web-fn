@@ -15,7 +15,7 @@ import Verify from "./pages/Verify";
 import OurBlog from "./pages/OurBlog";
 
 import project from "./components/project";
-import Admindashboard from "./pages/Admindashboard";
+import Adminpage from "./pages/Adminpage";
 
 const App: React.FC = () => {
   return (
@@ -40,7 +40,7 @@ const App: React.FC = () => {
   <Route path="/blog/id" Component={blogPage} />
   <Route path="/project/:id" Component={projectPage} />
   <Route path="/project" Component={project} />
-  <Route path="/adminpage" Component={Admindashboard} />
+  <Route path="/adminpage" Component={Adminpage} />
  </Routes>
 
         </BrowserRouter>
