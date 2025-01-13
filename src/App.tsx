@@ -16,9 +16,7 @@ import OurBlog from "./pages/OurBlog";
 
 import project from "./components/project";
 import contactPage from "./pages/contactPage";
-const App: React.FC = () => {
-  return (
-    <AuthContextAPI>
+
 
 const App: React.FC = () => {
   return (
@@ -32,22 +30,7 @@ const App: React.FC = () => {
             hideProgressBar
           />
 
-          <Routes>
-            <Route path="/" Component={LandingPage} />
-            <Route path="/login" Component={LoginPage} />
-            <Route path="/register" Component={SignUpPage} />
-            <Route path="/verify/:token" Component={Verify} />
-            <Route path="/message" Component={MessagePage} />
-            <Route path="/aboutus" Component={AboutUsPage} />
-            <Route path="/blogs" Component={OurBlog} />
-
-            {/* **_Happy */}
-            <Route path="/blog/id" Component={blogPage} />
-            <Route path="/project/:id" Component={projectPage} />
-            <Route path="/project" Component={project} />
-            <Route path="/contact" Component={contactPage} />
-            {/* _** */}
-          </Routes>
+        
           
         <Routes>
   <Route path="/" Component={LandingPage} />
@@ -60,6 +43,10 @@ const App: React.FC = () => {
   <Route path="/blog/id" Component={blogPage} />
   <Route path="/project/:id" Component={projectPage} />
   <Route path="/project" Component={project} />
+  <Route path="/project" Component={project} />
+  <Route path="/contact" Component={contactPage} />
+  <Route path="/about" Component={AboutUsPage} />
+
 </Routes>
 
         </BrowserRouter>
