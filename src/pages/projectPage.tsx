@@ -86,17 +86,7 @@ const projectPage = () => {
           </button>
         </div>
       </div>
-<<<<<<< HEAD
-      <div className="w-full text-center py-5">
-        <button className="bg-[#FFA500] rounded-[30px] px-5 py-2">
-          NEXT PROJECT
-        </button>
-      </div>
-    </div></>
-    
-=======
     </>
->>>>>>> develop
   );
 };
 
