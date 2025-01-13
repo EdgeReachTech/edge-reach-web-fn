@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 
 const projectPage = () => {
   return (
+    
     <><Navbar /><div className="bg-[#C0C0C0]">
       <div>
         <p className="text-[28px] p-5 font-bold">
@@ -21,7 +22,7 @@ const projectPage = () => {
           CyberPro Group <br /> Official Website
         </p>
       </div>
-
+       
       <div className="flex flex-col lg:flex-row w-[90%] mx-auto gap-5 lg:10">
         <img
           src="https://images.pexels.com/photos/29637182/pexels-photo-29637182/free-photo-of-artistic-portrait-of-dancer-with-floral-headpiece.jpeg"
@@ -83,6 +84,7 @@ const projectPage = () => {
         </button>
       </div>
     </div></>
+    
   );
 };
 
