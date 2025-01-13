@@ -15,6 +15,8 @@ import Verify from "./pages/Verify";
 import OurBlog from "./pages/OurBlog";
 
 import project from "./components/project";
+import contactPage from "./pages/contactPage";
+
 
 const App: React.FC = () => {
   return (
@@ -27,6 +29,8 @@ const App: React.FC = () => {
             autoClose={3000}
             hideProgressBar
           />
+
+        
           
         <Routes>
   <Route path="/" Component={LandingPage} />
@@ -39,6 +43,10 @@ const App: React.FC = () => {
   <Route path="/blog/id" Component={blogPage} />
   <Route path="/project/:id" Component={projectPage} />
   <Route path="/project" Component={project} />
+  <Route path="/project" Component={project} />
+  <Route path="/contact" Component={contactPage} />
+  <Route path="/about" Component={AboutUsPage} />
+
 </Routes>
 
         </BrowserRouter>
