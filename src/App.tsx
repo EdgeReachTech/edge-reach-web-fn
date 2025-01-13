@@ -15,9 +15,12 @@ import Verify from "./pages/Verify";
 import OurBlog from "./pages/OurBlog";
 
 import project from "./components/project";
+import contactPage from "./pages/contactPage";
+
 
 const App: React.FC = () => {
   return (
+ 
     <AuthContextAPI >
       <MessageContextAPI>
         <BrowserRouter>
@@ -26,22 +29,26 @@ const App: React.FC = () => {
             autoClose={3000}
             hideProgressBar
           />
-          
-            <Routes>
-              <Route path="/" Component={LandingPage} />
-              <Route path="/login" Component={LoginPage} />
-              <Route path="/register" Component={SignUpPage} />
-              <Route path="/verify/:token" Component={Verify} />
-              <Route path="/message" Component={MessagePage} />
-              <Route path="/aboutus" Component={AboutUsPage} />
-              <Route path="/blogs" Component={OurBlog} />
 
-            {/* **_Happy */}
-            <Route path="/blog/id" Component={blogPage} />
-            <Route path="/project/:id" Component={projectPage} />
-            <Route path="/project" Component={project} />
-            {/* _** */}
-          </Routes>
+        
+          
+        <Routes>
+  <Route path="/" Component={LandingPage} />
+  <Route path="/login" Component={LoginPage} />
+  <Route path="/register" Component={SignUpPage} />
+  <Route path="/verify/:token" Component={Verify} />
+  <Route path="/message" Component={MessagePage} />
+  <Route path="/aboutus" Component={AboutUsPage} />
+  <Route path="/blogs" Component={OurBlog} />
+  <Route path="/blog/id" Component={blogPage} />
+  <Route path="/project/:id" Component={projectPage} />
+  <Route path="/project" Component={project} />
+  <Route path="/project" Component={project} />
+  <Route path="/contact" Component={contactPage} />
+  <Route path="/about" Component={AboutUsPage} />
+
+</Routes>
+
         </BrowserRouter>
       </MessageContextAPI>
     </AuthContextAPI>
