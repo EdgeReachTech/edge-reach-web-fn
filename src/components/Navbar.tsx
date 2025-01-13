@@ -16,17 +16,17 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="fixed top-10 z-50 w-full px-4 lg:px-10 ">
-      <div className="bg-white shadow-md lg:shadow-none lg:flex lg:flex-row lg:justify-between lg:items-center ">
+      <div className="lg:bg-white  shadow-md lg:shadow-none lg:flex lg:flex-row lg:justify-between lg:items-center ">
         <div className="flex justify-between items-center mx-2 px-4 ">
-          <h5 className="font-extrabold text-teal-950">EDGE-REACH TECH</h5>
+          <h5 className="font-extrabold hidden lg:block text-teal-950">EDGE-REACH TECH</h5>
           <FontAwesomeIcon
             icon={isMenuOpen ? faTimes : faBars}
-            className="text-black text-3xl lg:hidden cursor-pointer"
+            className="text-black text-3xl fixed left-4 top-4 lg:hidden cursor-pointer"
             onClick={toggleMenu}
           />
         </div>
         <div
-          className={`lg:flex lg:flex-row ${
+          className={`lg:flex lg:flex-row bg-white w-fit fixed lg:static left-0 h-full lg:h-auto ${
             isMenuOpen ? "flex" : "hidden"
           } transition-all duration-300 ease-in-out flex-col`}
         >
