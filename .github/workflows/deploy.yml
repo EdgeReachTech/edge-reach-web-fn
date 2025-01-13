@@ -10,10 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Restrict Workflow to Specific Users
+        if: ${{ github.actor != 'rodriguecyber' && github.actor != 'EdgeReachTech' }}
+        run: |
+          echo "Unauthorized user: ${{ github.actor }}. Exiting workflow."
+          exit 1
+
       - name: Checkout code
+        if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
         uses: actions/checkout@v3
 
       - name: Copy files to VPS
+        if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
         uses: appleboy/scp-action@v0.1.5
         with:
           host: 77.37.124.116
@@ -24,6 +32,7 @@ jobs:
           port: 2200
 
       - name: Restart Application
+        if: ${{ github.actor == 'rodriguecyber' || github.actor == 'EdgeReachTech' }}
         uses: appleboy/ssh-action@v0.1.4
         with:
           host: 77.37.124.116
