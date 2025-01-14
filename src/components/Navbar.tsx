@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
             <FontAwesomeIcon icon={faPhone} className="m-3" />
             <div className="flex flex-col">
               <p className="font-bold">Call us</p>
-              <p>+250 786 605 505</p>
+              <p>+250 788 764 885</p>
             </div>
           </div>
         </div>
