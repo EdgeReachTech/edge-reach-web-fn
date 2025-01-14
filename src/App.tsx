@@ -43,7 +43,6 @@ const App: React.FC = () => {
   <Route path="/blog/id" Component={blogPage} />
   <Route path="/project/:id" Component={projectPage} />
   <Route path="/project" Component={project} />
-  <Route path="/project" Component={project} />
   <Route path="/contact" Component={contactPage} />
   <Route path="/about" Component={AboutUsPage} />
 
