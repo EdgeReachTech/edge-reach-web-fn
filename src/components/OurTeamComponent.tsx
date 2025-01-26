@@ -8,7 +8,7 @@ const OurTeamComponent:React.FC = () => {
       id: 1,
       img: '/Fiacre-CEO.webp',
       name: "I. Fiacre ",
-      role: "CHIEF EXECUTIVE OFFICER",
+      role: "Chief Executive Officer",
     },
     {
       id: 2,
@@ -44,7 +44,7 @@ const OurTeamComponent:React.FC = () => {
               <p className="text-[15px] font-bold text-center uppercase text-sky-700">
                 {member.name}
               </p>
-              <p className="text-center text-[12px]  lowercase text-black  font-bold">
+              <p className="text-center text-[12px]   text-black  font-bold">
                 {member.role}
               </p>
               <div className="flex items-center justify-center gap-2">
