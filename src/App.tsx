@@ -16,6 +16,7 @@ import OurBlog from "./pages/OurBlog";
 
 import project from "./components/project";
 import contactPage from "./pages/contactPage";
+import dashboard from "./pages/dashboard";
 
 
 const App: React.FC = () => {
@@ -45,6 +46,7 @@ const App: React.FC = () => {
   <Route path="/project" Component={project} />
   <Route path="/contact" Component={contactPage} />
   <Route path="/about" Component={AboutUsPage} />
+  <Route path="/dashboard" Component={dashboard} />
 
 </Routes>
 

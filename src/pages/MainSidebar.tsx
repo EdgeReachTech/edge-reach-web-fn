@@ -6,14 +6,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from 'react';
+import { useAuth } from "../context/AuthContext";
 const MainSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+const {Logout} = useAuth()
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
   return (
-    <div className="max-md:z-50" >
+    <div className=" " >
     <button 
       className="md:hidden fixed  max-sm:ml-[-.7em] top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded"
       onClick={toggleSidebar}
@@ -91,7 +92,9 @@ const MainSidebar = () => {
         </li>
         <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
           <FontAwesomeIcon icon={faSignOutAlt} />
-         <a href="">Log Out</a>
+         <a onClick={
+          ()=>Logout()
+         }>Log Out</a>
         </li>
       </ul>
     </div>

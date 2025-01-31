@@ -4,9 +4,7 @@ import AuthButton from "./authButton";
 const Home: React.FC = () => {
   return (
     <div
-      className="relative h-screen bg-cover bg-center overflow-hidden"
-      style={{ backgroundImage: "url(/path/to/your/background/image.jpg)" }}
-    >
+      className="relative h-screen bg-cover bg-center overflow-hidden">
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="relative flex flex-col items-center justify-center h-full px-4 md:px-9 text-center text-white">

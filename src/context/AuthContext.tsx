@@ -25,7 +25,7 @@ interface AuthContextData {
   Login(user: object): Promise<void>;
   Register(user: object): Promise<void>;
   Verify(token: string): Promise<boolean>;
-  getUser(token: string): Promise<void>;
+  getUser(): Promise<void>;
   Logout(): void;
   getAllUsers(token: string): Promise<void>;
 }
@@ -45,11 +45,11 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Login = async (userData: object) => {
     try {
       const response = await axios.post(
-        "https://edgereachtech.com/user/login",
+        "https://adgereachtech-web-bn-5ycv.onrender.com/user/login",
         userData
       );
       localStorage.setItem("token", response.data.token);
-      await getUser(response.data.token);
+      await getUser();
       toast.success(response.data.message);
       window.location.href = "/message";
     } catch (error: any) {
@@ -68,7 +68,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Register = async (userData: object) => {
     try {
       const response = await axios.post(
-        "https://adgereachtech-web-bn.onrender.com/user/register",
+        "https://adgereachtech-web-bn-5ycv.onrender.com/user/register",
         userData
       );
       toast.success(response.data.message);
@@ -95,7 +95,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Verify = async (token: string) => {
     try {
       await axios.get(
-        `https://adgereachtech-web-bn.onrender.com/user/verify/${token}`
+        `https://adgereachtech-web-bn-5ycv.onrender.com/user/verify/${token}`
       );
       return true;
     } catch (error) {
@@ -108,14 +108,16 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
     window.location.href = "/login";
   };
 
-  const getUser = async (token: string) => {
+  const getUser = async () => {
     try {
+      const token  = localStorage.getItem('token')
       setIsLoading(true);
       if(!token){
         window.location.href='/login'
+        return
       }
       const response = await axios.get(
-        "https://adgereachtech-web-bn.onrender.com/user/logged-user",
+        "https://adgereachtech-web-bn-5ycv.onrender.com/user/me",
         {
           headers: {
             "Content-Type": "application/json",
@@ -145,7 +147,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const getAllUsers = async (token: string) => {
     try {
       const response = await axios.get(
-        "https://adgereachtech-web-bn.onrender.com/user/all-user",
+        "https://adgereachtech-web-bn.onrender.com/user",
         {
           headers: {
             "Contemt-Type": "application/json",

@@ -28,15 +28,15 @@ const Homebg: React.FC = () => {
   }, []);
 
   return (
-    <div className="absolute w-screen h-screen overflow-hidden bg-gray-300">
+    <div className="absolute h-screen overflow-hidden bg-gray-300">
       <div
-        className=" flex transition-transform duration-1000 ease-in-out"
+        className=" flex transition-transform duration-1000 ease-in-out "
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, index) => (
           <div key={index} className="min-w-full h-full">
             <img
-              className="w-full h-full brightness-50 object-cover"
+              className="w-full h-full brightness-50 object-cover "
               src={image}
               alt={`Slide ${index + 1}`}
             />
