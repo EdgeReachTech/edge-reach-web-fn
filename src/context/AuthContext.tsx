@@ -51,7 +51,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.setItem("token", response.data.token);
       await getUser();
       toast.success(response.data.message);
-      window.location.href = "/message";
+      window.location.href = "/dashboard";
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         if (error.response) {
