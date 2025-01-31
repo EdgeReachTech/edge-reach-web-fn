@@ -3,6 +3,7 @@ import { createContext, ReactNode, useContext, useState } from "react";
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_BASE_URL } from "../config/BASE_API";
 
 interface user {
   _id: string;
@@ -45,7 +46,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Login = async (userData: object) => {
     try {
       const response = await axios.post(
-        "https://adgereachtech-web-bn-5ycv.onrender.com/user/login",
+        `${API_BASE_URL}/user/login`,
         userData
       );
       localStorage.setItem("token", response.data.token);
@@ -68,7 +69,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Register = async (userData: object) => {
     try {
       const response = await axios.post(
-        "https://adgereachtech-web-bn-5ycv.onrender.com/user/register",
+        `${API_BASE_URL}/user/register`,
         userData
       );
       toast.success(response.data.message);
@@ -95,7 +96,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Verify = async (token: string) => {
     try {
       await axios.get(
-        `https://adgereachtech-web-bn-5ycv.onrender.com/user/verify/${token}`
+        `${API_BASE_URL}/user/verify/${token}`
       );
       return true;
     } catch (error) {
@@ -117,7 +118,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
         return
       }
       const response = await axios.get(
-        "https://adgereachtech-web-bn-5ycv.onrender.com/user/me",
+      `${API_BASE_URL}/user/me`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -147,7 +148,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const getAllUsers = async (token: string) => {
     try {
       const response = await axios.get(
-        "https://adgereachtech-web-bn.onrender.com/user",
+        `${API_BASE_URL}/user`,
         {
           headers: {
             "Content-Type": "application/json",
