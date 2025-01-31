@@ -3,14 +3,14 @@ import { FaBars, FaBell, FaHome, FaSearch } from "react-icons/fa";
 import { FaEllipsisVertical, FaGear, FaMessage } from "react-icons/fa6";
 import { useAuth } from "../context/AuthContext";
 import { ClipLoader } from "react-spinners";
-import messageAuth, { useMessage } from "../context/messageAuth";
+import { useMessage } from "../context/messageAuth";
 
 const MessagePage: React.FC = () => {
   const {isLoading, getUser, getAllUsers,users ,loggedUser} = useAuth();
   const {message,getMessage} = useMessage()
   useEffect(() => {
     const token = localStorage.getItem("token");
-      getUser(token as string);
+      getUser();
       getAllUsers(token as string)
      getMessage(token as string)
    
