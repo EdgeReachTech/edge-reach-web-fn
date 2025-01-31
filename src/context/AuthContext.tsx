@@ -150,7 +150,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
         "https://adgereachtech-web-bn.onrender.com/user",
         {
           headers: {
-            "Contemt-Type": "application/json",
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
