@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { createContext, ReactNode, useContext, useState } from "react";
+import { API_BASE_URL } from "../config/BASE_API";
 
 interface Message {
+  createdAt: string | number | Date;
   _id:string
   sender: string;
   receiver: string;
@@ -12,7 +14,9 @@ interface Message {
 
 interface MessageContextData {
   message: Message[];
-  getMessage: (token: string) => Promise<void>;
+  getMessage: () => Promise<void>;
+  sendMessage: (content:string,receiver:string) => Promise<void>;
+  
 }
 
 interface MessageProviderProps {
@@ -26,10 +30,31 @@ export const messageContext = createContext<MessageContextData>(
 const MessageContextAPI: React.FC<MessageProviderProps> = ({ children }) => {
   const [message, setMessage] = useState<Message[] >([]);
 
-  const getMessage = async (token: string) => {
+  const getMessage = async () => {
+    const token = localStorage.getItem('token')
     try {
       const response = await axios.get<Message[]>(
-        "https://edgereachtech.com/message/messages/",
+        `${API_BASE_URL}/message/`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMessage(response.data);
+    } catch (error) {
+    
+      setMessage([]);
+      throw error
+    }
+  };
+  const sendMessage = async (content:string,receiver:string) => {
+    const token = localStorage.getItem('token')
+    try {
+      const response = await axios.post<Message[]>(
+        `${API_BASE_URL}/message/${receiver}`,
+        {content},
         {
           headers: {
             "Content-Type": "application/json",
@@ -46,7 +71,7 @@ const MessageContextAPI: React.FC<MessageProviderProps> = ({ children }) => {
   };
 
   return (
-    <messageContext.Provider value={{ message, getMessage }}>
+    <messageContext.Provider value={{ message, getMessage,sendMessage }}>
       {children}
     </messageContext.Provider>
   );

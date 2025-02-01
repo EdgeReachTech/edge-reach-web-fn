@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { API_BASE_URL } from "../config/BASE_API";
 
-interface user {
+export interface user {
   _id: string;
   firstName:string;
   lastName: string;
@@ -28,7 +28,7 @@ interface AuthContextData {
   Verify(token: string): Promise<boolean>;
   getUser(): Promise<void>;
   Logout(): void;
-  getAllUsers(token: string): Promise<void>;
+  getAllUsers(): Promise<void>;
 }
 interface AuthProviderProps {
   children: ReactNode;
@@ -140,13 +140,15 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
       } else {
         toast.error("unexpected error");
       }
+      await Logout()
     } finally {
       setIsLoading(false);
     }
   };
 
-  const getAllUsers = async (token: string) => {
+  const getAllUsers = async () => {
     try {
+      const token  = localStorage.getItem('token')
       const response = await axios.get(
         `${API_BASE_URL}/user`,
         {

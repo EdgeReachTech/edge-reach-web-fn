@@ -16,7 +16,7 @@ const {Logout} = useAuth()
   return (
     <div className=" " >
     <button 
-      className="md:hidden fixed  max-sm:ml-[-.7em] top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded"
+      className="md:hidden fixed max-sm:ml-[-.7em] top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded"
       onClick={toggleSidebar}
     >
       <FontAwesomeIcon icon={faBars} size="lg" />
