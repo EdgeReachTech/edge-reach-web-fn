@@ -38,7 +38,6 @@ const App: React.FC = () => {
   <Route path="/login" Component={LoginPage} />
   <Route path="/register" Component={SignUpPage} />
   <Route path="/verify/:token" Component={Verify} />
-  <Route path="/message" Component={MessagePage} />
   <Route path="/aboutus" Component={AboutUsPage} />
   <Route path="/blogs" Component={OurBlog} />
   <Route path="/blog/id" Component={blogPage} />

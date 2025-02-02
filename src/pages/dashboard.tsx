@@ -82,7 +82,6 @@ const Dashboard = () => {
     <div className="h-screen flex flex-col">
       <WelcPanelBoardmain />
       <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar Toggle Button */}
         <button
           className="md:hidden fixed top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -153,7 +152,9 @@ const Dashboard = () => {
         <div className="flex-1 flex bg-gray-900">
           {/* Users List */}
           <div className="w-80 border-r border-gray-700 flex-shrink-0 overflow-y-auto">
-            {users.map((user) => (
+            {users.filter((user)=>{
+  return user._id!==loggedUser._id
+            }).map((user) => (
               <div
                 key={user._id}
                 onClick={() => setSelectedUser(user)}
