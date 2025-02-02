@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import WelcPanelBoardmain from "./WelcPanelBoardmain";
 import { useAuth, user } from "../context/AuthContext";
 import { useMessage } from "../context/messageAuth";
@@ -18,52 +18,71 @@ import {
   faThLarge,
   faUsers,
   faUserTie,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
-import { FaForward } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { Logout, getUser, loggedUser, isLoading } = useAuth();
-  const { getMessage,message,sendMessage } = useMessage();
-  const {users,getAllUsers}= useAuth()
-  const [selectedUser,setSelectedUser] = useState<user|null>(null)
-  const [msgcontent,setMsgContent] = useState<String|null>(null)
+  const { getMessage, message, sendMessage } = useMessage();
+  const { users, getAllUsers } = useAuth();
+  const [selectedUser, setSelectedUser] = useState<user | null>(null);
+  const [msgContent, setMsgContent] = useState<string>("");
 
   useEffect(() => {
     const fetchUser = async () => {
       await getUser();
-      await getAllUsers()
+      await getAllUsers();
       await getMessage();
-      
     };
     fetchUser();
-
   }, []);
-  const handleSend=async(receiver:string)=>{
-try {
-  await sendMessage(msgcontent as string,receiver)
-  await getMessage()
 
-} catch (error) {
-  toast.error('message failed')
-  
-}
-  }
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diff = now.getTime() - date.getTime();
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-  if (isLoading) {
-    return <p className="text-center">Loading...</p>;
-  }
+    if (days === 0) {
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } else if (days === 1) {
+      return 'Yesterday';
+    } else if (days < 7) {
+      return date.toLocaleDateString([], { weekday: 'short' });
+    } else {
+      return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+    }
+  };
 
-  if (!loggedUser) {
-    return <p>No user found</p>;
-  }
+  const handleSend = async (receiver: string) => {
+    if (!msgContent.trim()) return;
+    
+    try {
+      await sendMessage(msgContent, receiver);
+      await getMessage();
+      setMsgContent("");
+    } catch (error) {
+      toast.error('Message failed to send');
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent, receiver: string) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend(receiver);
+    }
+  };
+
+  if (isLoading) return <div className="flex items-center justify-center h-screen">Loading...</div>;
+  if (!loggedUser) return <div className="flex items-center justify-center h-screen">No user found</div>;
 
   return (
-    <div>
+    <div className="h-screen flex flex-col">
       <WelcPanelBoardmain />
-      <div className="flex">
-        {/* Sidebar */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar Toggle Button */}
         <button
           className="md:hidden fixed top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -71,124 +90,168 @@ try {
           <FontAwesomeIcon icon={faBars} size="lg" />
         </button>
 
+        {/* Sidebar */}
         <div
-          className={`w-64 h-screen bg-gray-800 text-white flex flex-col transition-transform duration-300 ease-in-out z-40 
+          className={`w-64 bg-gray-800 text-white flex-shrink-0 flex flex-col transition-transform duration-300 ease-in-out z-40 
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
         >
-          <div className="bg-gray-800 gap-3 mt-[-3.5em] cursor-pointer font-bold flex justify-center items-center pt-4">
-            <div className="w-[80%] ml-[-3em]">
-              <img src="/Logo.png" alt="company logo" />
-            </div>
-            <div className="ml-[-3.5em]">
-              <h4 className="font-loboto text-[#8cf3f3]">EDGEREACH</h4>
-              <span className="text-gray-400">ADMIN PANEL</span>
+          {/* Logo Section */}
+          <div className="p-4 flex items-center space-x-2">
+            <img src="/Logo.png" alt="company logo" className="h-8" />
+            <div>
+              <h4 className="text-[#8cf3f3] font-bold">EDGEREACH</h4>
+              <span className="text-gray-400 text-sm">ADMIN PANEL</span>
             </div>
           </div>
 
           {/* Navigation */}
-          <ul className="flex-1 space-y-4 mt-[-3em] bg-gray-800 px-4">
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faThLarge} />
-              <a href="#">Dashboard</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faNewspaper} />
-              <a href="#">Blog</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faComments} />
-              <a href="#">Comments</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faTasks} />
-              <a href="#">Project</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faQuoteRight} />
-              <a href="#">Testimonial</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faEnvelope} />
-              <a href="#">Messaging</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faUsers} />
-              <a href="#">Team Management</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faUserTie} />
-              <a href="#">Employee</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faClipboardList} />
-              <a href="#">Task Management</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faEnvelopeOpen} />
-              <a href="#">Subscribers</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
-              <FontAwesomeIcon icon={faPhone} />
-              <a href="#">Contact</a>
-            </li>
-          </ul>
+          <nav className="flex-1 overflow-y-auto">
+            <ul className="space-y-1 px-2">
+              {[
+                { icon: faThLarge, text: "Dashboard" },
+                { icon: faNewspaper, text: "Blog" },
+                { icon: faComments, text: "Comments" },
+                { icon: faTasks, text: "Project" },
+                { icon: faQuoteRight, text: "Testimonial" },
+                { icon: faEnvelope, text: "Messaging" },
+                { icon: faUsers, text: "Team Management" },
+                { icon: faUserTie, text: "Employee" },
+                { icon: faClipboardList, text: "Task Management" },
+                { icon: faEnvelopeOpen, text: "Subscribers" },
+                { icon: faPhone, text: "Contact" },
+              ].map((item) => (
+                <li key={item.text}>
+                  <a
+                    href="#"
+                    className="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700 transition-colors duration-200"
+                  >
+                    <FontAwesomeIcon icon={item.icon} className="w-5" />
+                    <span>{item.text}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          <ul className="space-y-4 bg-gray-800 px-4 pb-4">
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
+          {/* Footer Navigation */}
+          <div className="p-4 space-y-2">
+            <button className="w-full flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700 transition-colors duration-200">
               <FontAwesomeIcon icon={faQuestionCircle} />
-              <a href="#">Help</a>
-            </li>
-            <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
+              <span>Help</span>
+            </button>
+            <button
+              onClick={() => Logout()}
+              className="w-full flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700 transition-colors duration-200"
+            >
               <FontAwesomeIcon icon={faSignOutAlt} />
-              <a onClick={() => Logout()}>Log Out</a>
-            </li>
-          </ul>
+              <span>Log Out</span>
+            </button>
+          </div>
         </div>
 
-        
-        <div className="flex bg-gray-800 border-2 border-l-yellow-200 border-solid max-h-max flex-grow">
-          <div className="flex flex-col p-2">
-           {
-            users.map((user)=>(
-              <div className="flex gap-2 items-center border-b-2 p-2 border-b-gray-600 border-solid text-white w-64" onClick={()=>setSelectedUser(user)}>
-              <img src="JAZZY.jpg" alt="Profile" className="w-10 h-10 rounded-full" />
-              <div className="flex flex-col gap-2 text-start w-36">
-                <h2 className="font-bold">{user._id===loggedUser._id?'You':user.firstName}</h2>
-                <p className="overflow-x-hidden text-nowrap">
-        {message
-    .filter((m) => m.receiver === user._id || m.sender === user._id) 
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) 
-    .map((m) => m.content)[0] || "No messages yet"} 
-</p>
+        {/* Main Chat Area */}
+        <div className="flex-1 flex bg-gray-900">
+          {/* Users List */}
+          <div className="w-80 border-r border-gray-700 flex-shrink-0 overflow-y-auto">
+            {users.map((user) => (
+              <div
+                key={user._id}
+                onClick={() => setSelectedUser(user)}
+                className={`flex items-center p-4 border-b border-gray-700 hover:bg-gray-800 cursor-pointer transition-colors duration-200 
+                ${selectedUser?._id === user._id ? 'bg-gray-800' : ''}`}
+              >
+                <img
+                  src="JAZZY.jpg"
+                  alt="Profile"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div className="ml-4 flex-1 min-w-0">
+                  <div className="flex justify-between items-baseline">
+                    <h3 className="text-white font-medium truncate">
+                      {user._id === loggedUser._id ? 'You' : user.firstName}
+                    </h3>
+                    <span className="text-xs text-gray-400 flex-shrink-0">
+                      {message
+                        .filter((m) => m.receiver === user._id || m.sender === user._id)
+                        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+                        .map((m) => formatDate(m.createdAt))[0] || ""}
+                    </span>
+                  </div>
+                  <p className="text-gray-400 text-sm truncate">
+                    {message
+                      .filter((m) => m.receiver === user._id || m.sender === user._id)
+                      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+                      .map((m) => m.content)[0] || "No messages yet"}
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col items-center gap-2">
-                <p className="text-blue-600 text-sm">{message
-    .filter((m) => m.receiver === user._id || m.sender === user._id) 
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) 
-    .map((m) => m.createdAt.toLocaleString())[0] || ""} </p>
-                <p className="bg-blue-500 text-white rounded-full text-center px-1 text-[12px]">{message
-    .filter((m) => m.receiver === user._id || m.sender === user._id) 
-    .map((m) => m.read===false).length|| ""} </p>
-              </div>
-            </div>
-            ))
-           }
+            ))}
           </div>
-          <div className="border-2 border-white border-solid w-3/4">
-{
-selectedUser?<div className="flex flex-col">
-<div className="flex gap-2 items-center text-white font-bold w-full bg-gray-400">
-<img src="JAZZY.jpg" alt="Profile" className="w-10 h-10 rounded-full" />
-<p>{selectedUser.firstName}</p>
-</div>
-<div className=""></div>
-<div className="fixed bottom-0 w-1/2 py-2 px-3">
-  <div className="rounded-lg border-2 flex gap-2 border-white border-solid "><input name="msg" type="text" onChange={(e)=>setMsgContent(e.target.value)} className="w-3/4"/>
-   <button   onClick={()=>handleSend(selectedUser._id)} className="p-2 bg-blue-400 border-none rounded">send</button>
-  </div>
-</div>
-</div>:<p>select user to chat please</p>
-}
+
+          {/* Chat Section */}
+          <div className="flex-1 flex flex-col bg-gray-900">
+            {selectedUser ? (
+              <>
+                {/* Chat Header */}
+                <div className="flex items-center p-4 border-b border-gray-700 bg-gray-800">
+                  <img
+                    src="JAZZY.jpg"
+                    alt="Profile"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <h2 className="ml-4 text-white font-medium">{selectedUser.firstName}</h2>
+                </div>
+
+                {/* Messages */}
+                <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                  {message
+                    .filter((m) => m.sender === selectedUser._id || m.receiver === selectedUser._id)
+                    .map((m, index) => (
+                      <div
+                        key={index}
+                        className={`flex ${m.sender === loggedUser._id ? 'justify-end' : 'justify-start'}`}
+                      >
+                        <div
+                          className={`max-w-[70%] rounded-lg p-3 ${
+                            m.sender === loggedUser._id
+                              ? 'bg-blue-600 text-white'
+                              : 'bg-gray-700 text-white'
+                          }`}
+                        >
+                          <p>{m.content}</p>
+                          <span className="text-xs opacity-75 mt-1 block">
+                            {formatDate(m.createdAt)}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+
+                {/* Message Input */}
+                <div className="p-4 border-t border-gray-700">
+                  <div className="flex items-center space-x-2">
+                    <input
+                      type="text"
+                      value={msgContent}
+                      onChange={(e) => setMsgContent(e.target.value)}
+                      onKeyPress={(e) => handleKeyPress(e, selectedUser._id)}
+                      placeholder="Type a message..."
+                      className="flex-1 bg-gray-700 text-white rounded-full px-6 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <button
+                      onClick={() => handleSend(selectedUser._id)}
+                      className="bg-blue-600 text-white rounded-full p-3 hover:bg-blue-700 transition-colors duration-200"
+                    >
+                      <FontAwesomeIcon icon={faPaperPlane} />
+                    </button>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="flex-1 flex items-center justify-center text-gray-400">
+                Select a conversation to start messaging
+              </div>
+            )}
           </div>
         </div>
       </div>
