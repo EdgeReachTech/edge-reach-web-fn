@@ -150,7 +150,7 @@ const Dashboard = () => {
         {/* Main Chat Area */}
         <div className="flex-1 flex bg-gray-900">
           {/* Users List */}
-          <div className="w-80 border-r border-gray-700 flex-shrink-0 overflow-y-auto">
+          <div className="w-20 lg:w-80  border-r border-gray-700 flex-shrink-0 overflow-y-auto">
             {users.filter((user)=>{
               return user._id!==loggedUser._id
             }).map((user) => (
@@ -165,7 +165,7 @@ const Dashboard = () => {
                   alt="Profile"
                   className="w-12 h-12 rounded-full object-cover"
                 />
-                <div className="ml-4 flex-1 min-w-0">
+                <div className={`hidden ml-4 md:flex flex-col flex-1 min-w-0`}>
                   <div className="flex justify-between items-baseline">
                     <h3 className="text-white font-medium truncate">
                       {user._id === loggedUser._id ? 'You' : user.firstName}
@@ -189,7 +189,7 @@ const Dashboard = () => {
           </div>
 
           {/* Chat Section */}
-          <div className="flex-1 flex flex-col bg-gray-900">
+          <div className="flex-1 mt-16 lg:mt-0 flex flex-col bg-gray-900">
             {selectedUser ? (
               <>
                 {/* Chat Header */}
@@ -218,7 +218,7 @@ const Dashboard = () => {
                               : 'bg-gray-700 text-white'
                           }`}
                         >
-                          <p>{m.content}</p>
+                          <p className="text-sm">{m.content}</p>
                           <span className="text-xs opacity-75 mt-1 block">
                             {formatDate(m.createdAt as string)}
                           </span>
