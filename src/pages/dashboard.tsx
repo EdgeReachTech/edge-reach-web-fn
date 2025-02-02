@@ -152,7 +152,7 @@ const Dashboard = () => {
           {/* Users List */}
           <div className="w-80 border-r border-gray-700 flex-shrink-0 overflow-y-auto">
             {users.filter((user)=>{
-  return user._id!==loggedUser._id
+       return user._id!==loggedUser._id
             }).map((user) => (
               <div
                 key={user._id}
@@ -181,7 +181,7 @@ const Dashboard = () => {
                     {message
                       .filter((m) => m.receiver === user._id || m.sender === user._id)
                       .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-                      .map((m) => m.content)[0] || "No messages yet"}
+                      .map((m) => m.content)[0] || "Recently Joined chat"}
                   </p>
                 </div>
               </div>
