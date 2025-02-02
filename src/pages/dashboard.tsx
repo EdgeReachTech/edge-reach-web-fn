@@ -240,7 +240,7 @@ const Dashboard = () => {
                     />
                     <button
                       onClick={() => handleSend(selectedUser._id)}
-                      className="bg-blue-600 text-white rounded-full p-3 hover:bg-blue-700 transition-colors duration-200"
+                      className="text-blue-600  rounded-full p-3 hover:text-blue-700 transition-colors duration-200"
                     >
                       <FontAwesomeIcon icon={faPaperPlane} />
                     </button>
