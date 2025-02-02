@@ -61,7 +61,6 @@ const Dashboard = () => {
     
     try {
       await sendMessage(msgContent, receiver);
-      await getMessage();
       setMsgContent("");
     } catch (error) {
       toast.error('Message failed to send');

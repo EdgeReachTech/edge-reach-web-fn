@@ -62,7 +62,8 @@ const MessageContextAPI: React.FC<MessageProviderProps> = ({ children }) => {
           },
         }
       );
-      setMessage(response.data);
+      await getMessage()
+      // setMessage(response.data);
     } catch (error) {
     
       setMessage([]);
