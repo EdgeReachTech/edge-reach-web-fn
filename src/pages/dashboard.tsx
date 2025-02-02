@@ -174,7 +174,7 @@ const Dashboard = () => {
                       {message
                         .filter((m) => m.receiver === user._id || m.sender === user._id)
                         .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-                        .map((m) => formatDate(m.createdAt))[0] || ""}
+                        .map((m) => formatDate(m.createdAt as string))[0] || ""}
                     </span>
                   </div>
                   <p className="text-gray-400 text-sm truncate">
@@ -220,7 +220,7 @@ const Dashboard = () => {
                         >
                           <p>{m.content}</p>
                           <span className="text-xs opacity-75 mt-1 block">
-                            {formatDate(m.createdAt)}
+                            {formatDate(m.createdAt as string)}
                           </span>
                         </div>
                       </div>

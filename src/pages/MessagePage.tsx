@@ -11,8 +11,8 @@ const MessagePage: React.FC = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
       getUser();
-      getAllUsers(token as string)
-     getMessage(token as string)
+      getAllUsers()
+     getMessage()
    
   },[]);
   return (
