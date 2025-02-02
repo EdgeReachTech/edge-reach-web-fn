@@ -80,7 +80,7 @@ const Dashboard = () => {
   return (
     <div className="h-screen flex flex-col">
       <WelcPanelBoardmain />
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative">
         <button
           className="md:hidden fixed top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -90,7 +90,7 @@ const Dashboard = () => {
 
         {/* Sidebar */}
         <div
-          className={`w-64 bg-gray-800 text-white flex-shrink-0 flex flex-col transition-transform duration-300 ease-in-out z-40 
+          className={`w-64 md:w-auto md:relative absolute h-full bg-gray-800 text-white flex-shrink-0 flex flex-col transition-transform duration-300 ease-in-out z-40 
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
         >
           {/* Logo Section */}
@@ -152,7 +152,7 @@ const Dashboard = () => {
           {/* Users List */}
           <div className="w-80 border-r border-gray-700 flex-shrink-0 overflow-y-auto">
             {users.filter((user)=>{
-       return user._id!==loggedUser._id
+              return user._id!==loggedUser._id
             }).map((user) => (
               <div
                 key={user._id}
