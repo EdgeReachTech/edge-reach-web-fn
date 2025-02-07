@@ -4,6 +4,7 @@ import ImageUploaderComponent from "../components/ImageUploaderComponent";
 import { useLocation } from "react-router-dom";
 import { CardType } from "../types/types";
 import { LuLoader } from "react-icons/lu";
+import { API_BASE_URL } from "../config/BASE_API";
 
 const CreatePost = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const CreatePost = () => {
       const getBlogToUpdate = async () => {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          "http://localhost:5000/blog/userBlog/" + blogId,
+          `${API_BASE_URL}/blog/userBlog/${blogId}`,
           {
             method: "GET",
             headers: {
@@ -92,7 +93,7 @@ const CreatePost = () => {
     try {
       if (blogId) {
         const response = await fetch(
-          "http://localhost:5000/blog/updateBlog/" + blogId,
+          `${API_BASE_URL}/blog/updateBlog/${blogId}`,
           {
             method: "PATCH",
             body: formDataToSend,
@@ -106,7 +107,7 @@ const CreatePost = () => {
           window.location.href = "/";
         }
       } else {
-        const response = await fetch("http://localhost:5000/blog/createBlog", {
+        const response = await fetch(`${API_BASE_URL}/blog/createBlog`, {
           method: "POST",
           body: formDataToSend,
           headers: {
@@ -120,24 +121,6 @@ const CreatePost = () => {
       }
       setUploading(false);
     } catch (error) {
-      setUploading(false);
-    }
-  };
-
-  const handleDelete = async () => {
-    const token = localStorage.getItem("token");
-    try {
-      await fetch(
-        "http://localhost:5000/blog/deleteBlog/67a1e3165d8885b2577151c4",
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-    } catch (error) {
-      console.log("Error sending request:", error);
       setUploading(false);
     }
   };
@@ -225,12 +208,6 @@ const CreatePost = () => {
           </button>
         </div>
       </form>
-      <button
-        onClick={handleDelete}
-        className="px-4 py-2 bg-black text-white rounded-lg"
-      >
-        Delete blog
-      </button>
     </section>
   );
 };

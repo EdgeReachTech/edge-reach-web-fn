@@ -44,6 +44,12 @@ const Navbar: React.FC = () => {
           <a href="/project" className="p-4 lg:px-4 lg:py-2 hover:underline">
             Projects
           </a>
+          <a
+            href="/creatingBlog"
+            className="p-4 lg:px-4 lg:py-2 text-white bg-red-500 px-4 py-2 rounded-md"
+          >
+            Add blog
+          </a>
           <a href="/blogs" className="p-4 lg:px-4 lg:py-2 hover:underline">
             Blogs
           </a>

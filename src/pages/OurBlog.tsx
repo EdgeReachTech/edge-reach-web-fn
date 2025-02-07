@@ -14,6 +14,7 @@ import Navbar from "../components/Navbar";
 import { CardType } from "../types/types";
 import { formatDate } from "../utils";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../config/BASE_API";
 
 const OurBlog: React.FC = () => {
   const [cards, setCards] = useState<CardType[]>();
@@ -79,7 +80,7 @@ const OurBlog: React.FC = () => {
   useEffect(() => {
     const getAllBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:5000/blog/blogs", {
+        const response = await fetch(`${API_BASE_URL}/blog/blogs`, {
           method: "GET",
         });
 

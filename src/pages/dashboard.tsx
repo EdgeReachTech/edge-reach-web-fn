@@ -46,36 +46,49 @@ const Dashboard = () => {
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
     if (days === 0) {
-      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      return date.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
     } else if (days === 1) {
-      return 'Yesterday';
+      return "Yesterday";
     } else if (days < 7) {
-      return date.toLocaleDateString([], { weekday: 'short' });
+      return date.toLocaleDateString([], { weekday: "short" });
     } else {
-      return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+      return date.toLocaleDateString([], { month: "short", day: "numeric" });
     }
   };
 
   const handleSend = async (receiver: string) => {
     if (!msgContent.trim()) return;
-    
+
     try {
       await sendMessage(msgContent, receiver);
       setMsgContent("");
     } catch (error) {
-      toast.error('Message failed to send');
+      toast.error("Message failed to send");
     }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent, receiver: string) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend(receiver);
     }
   };
 
-  if (isLoading) return <div className="flex items-center justify-center h-screen">Loading...</div>;
-  if (!loggedUser) return <div className="flex items-center justify-center h-screen">No user found</div>;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        Loading...
+      </div>
+    );
+  if (!loggedUser)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        No user found
+      </div>
+    );
 
   return (
     <div className="h-screen flex flex-col">
@@ -91,7 +104,11 @@ const Dashboard = () => {
         {/* Sidebar */}
         <div
           className={`w-64 md:w-auto md:relative absolute h-full bg-gray-800 text-white flex-shrink-0 flex flex-col transition-transform duration-300 ease-in-out z-40 
-          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
+          ${
+            isSidebarOpen
+              ? "translate-x-0"
+              : "-translate-x-full md:translate-x-0"
+          }`}
         >
           {/* Logo Section */}
           <div className="p-4 flex items-center space-x-2">
@@ -151,41 +168,60 @@ const Dashboard = () => {
         <div className="flex-1 flex bg-gray-900">
           {/* Users List */}
           <div className="w-20 lg:w-80  border-r border-gray-700 flex-shrink-0 overflow-y-auto">
-            {users.filter((user)=>{
-              return user._id!==loggedUser._id
-            }).map((user) => (
-              <div
-                key={user._id}
-                onClick={() => setSelectedUser(user)}
-                className={`flex items-center p-4 border-b border-gray-700 hover:bg-gray-800 cursor-pointer transition-colors duration-200 
-                ${selectedUser?._id === user._id ? 'bg-gray-800' : ''}`}
-              >
-                <img
-                  src="JAZZY.jpg"
-                  alt="Profile"
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div className={`hidden ml-4 md:flex flex-col flex-1 min-w-0`}>
-                  <div className="flex justify-between items-baseline">
-                    <h3 className="text-white font-medium truncate">
-                      {user._id === loggedUser._id ? 'You' : user.firstName}
-                    </h3>
-                    <span className="text-xs text-gray-400 flex-shrink-0">
+            {users
+              .filter((user) => {
+                return user._id !== loggedUser._id;
+              })
+              .map((user) => (
+                <div
+                  key={user._id}
+                  onClick={() => setSelectedUser(user)}
+                  className={`flex items-center p-4 border-b border-gray-700 hover:bg-gray-800 cursor-pointer transition-colors duration-200 
+                ${selectedUser?._id === user._id ? "bg-gray-800" : ""}`}
+                >
+                  <img
+                    src="JAZZY.jpg"
+                    alt="Profile"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div
+                    className={`hidden ml-4 md:flex flex-col flex-1 min-w-0`}
+                  >
+                    <div className="flex justify-between items-baseline">
+                      <h3 className="text-white font-medium truncate">
+                        {user._id === loggedUser._id ? "You" : user.firstName}
+                      </h3>
+                      <span className="text-xs text-gray-400 flex-shrink-0">
+                        {message
+                          .filter(
+                            (m) =>
+                              m.receiver === user._id || m.sender === user._id
+                          )
+                          .sort(
+                            (a, b) =>
+                              new Date(b.createdAt).getTime() -
+                              new Date(a.createdAt).getTime()
+                          )
+                          .map((m) => formatDate(m.createdAt as string))[0] ||
+                          ""}
+                      </span>
+                    </div>
+                    <p className="text-gray-400 text-sm truncate">
                       {message
-                        .filter((m) => m.receiver === user._id || m.sender === user._id)
-                        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-                        .map((m) => formatDate(m.createdAt as string))[0] || ""}
-                    </span>
+                        .filter(
+                          (m) =>
+                            m.receiver === user._id || m.sender === user._id
+                        )
+                        .sort(
+                          (a, b) =>
+                            new Date(b.createdAt).getTime() -
+                            new Date(a.createdAt).getTime()
+                        )
+                        .map((m) => m.content)[0] || "Recently Joined chat"}
+                    </p>
                   </div>
-                  <p className="text-gray-400 text-sm truncate">
-                    {message
-                      .filter((m) => m.receiver === user._id || m.sender === user._id)
-                      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-                      .map((m) => m.content)[0] || "Recently Joined chat"}
-                  </p>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
 
           {/* Chat Section */}
@@ -199,23 +235,33 @@ const Dashboard = () => {
                     alt="Profile"
                     className="w-10 h-10 rounded-full object-cover"
                   />
-                  <h2 className="ml-4 text-white font-medium">{selectedUser.firstName}</h2>
+                  <h2 className="ml-4 text-white font-medium">
+                    {selectedUser.firstName}
+                  </h2>
                 </div>
 
                 {/* Messages */}
                 <div className="flex-1 overflow-y-auto p-4 space-y-4">
                   {message
-                    .filter((m) => m.sender === selectedUser._id || m.receiver === selectedUser._id)
+                    .filter(
+                      (m) =>
+                        m.sender === selectedUser._id ||
+                        m.receiver === selectedUser._id
+                    )
                     .map((m, index) => (
                       <div
                         key={index}
-                        className={`flex ${m.sender === loggedUser._id ? 'justify-end' : 'justify-start'}`}
+                        className={`flex ${
+                          m.sender === loggedUser._id
+                            ? "justify-end"
+                            : "justify-start"
+                        }`}
                       >
                         <div
                           className={`max-w-[70%] rounded-lg p-3 ${
                             m.sender === loggedUser._id
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-700 text-white'
+                              ? "bg-blue-600 text-white"
+                              : "bg-gray-700 text-white"
                           }`}
                         >
                           <p className="text-sm">{m.content}</p>

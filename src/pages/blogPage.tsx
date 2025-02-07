@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { CardType } from "../types/types";
 import { LuLoader } from "react-icons/lu";
 import { Link, useParams } from "react-router-dom";
+import { API_BASE_URL } from "../config/BASE_API";
 // import { useAuth } from "../context/AuthContext";
 
 const BlogPage: React.FC = () => {
@@ -16,7 +17,7 @@ const BlogPage: React.FC = () => {
       try {
         if (id) {
           const response = await fetch(
-            "http://localhost:5000/blog/singleBlog/" + id,
+            `${API_BASE_URL}/blog/singleBlog/${id}`,
             {
               method: "GET",
             }
@@ -53,7 +54,7 @@ const BlogPage: React.FC = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/blog/deleteBlog/" + blogId,
+        `${API_BASE_URL}/blog/deleteBlog/${blogId}`,
         {
           method: "DELETE",
           headers: {
