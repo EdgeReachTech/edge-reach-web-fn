@@ -92,7 +92,7 @@ const BoardMain = () => {
             <FontAwesomeIcon icon={faQuestionCircle} />
             <span>Help</span>
           </li>
-          <li className="flex items-center space-x-3 cursor-pointer hover:bg-gray-700 rounded-md p-2">
+          <li className="flex items-center space-x-3 cursor-pointer br hover:bg-gray-700 rounded-md p-2">
             <FontAwesomeIcon icon={faSignOutAlt} />
             <span>Log Out</span>
           </li>

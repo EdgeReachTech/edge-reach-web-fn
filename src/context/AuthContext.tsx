@@ -3,8 +3,9 @@ import { createContext, ReactNode, useContext, useState } from "react";
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API_BASE_URL } from "../config/BASE_API";
 
-interface user {
+export interface user {
   _id: string;
   firstName: string;
   lastName: string;
@@ -25,9 +26,9 @@ interface AuthContextData {
   Login(user: object): Promise<void>;
   Register(user: object): Promise<void>;
   Verify(token: string): Promise<boolean>;
-  getUser(token: string): Promise<void>;
+  getUser(): Promise<void>;
   Logout(): void;
-  getAllUsers(token: string): Promise<void>;
+  getAllUsers(): Promise<void>;
 }
 interface AuthProviderProps {
   children: ReactNode;
@@ -44,14 +45,11 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
 
   const Login = async (userData: object) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/user/login",
-        userData
-      );
+      const response = await axios.post(`${API_BASE_URL}/user/login`, userData);
       localStorage.setItem("token", response.data.token);
-      await getUser(response.data.token);
+      await getUser();
       toast.success(response.data.message);
-      window.location.href = "/message";
+      window.location.href = "/dashboard";
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         if (error.response) {
@@ -68,7 +66,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Register = async (userData: object) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/user/register",
+        `${API_BASE_URL}/user/register`,
         userData
       );
       toast.success(response.data.message);
@@ -94,10 +92,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   };
   const Verify = async (token: string) => {
     try {
-      await axios.get(
-        `http://localhost:5000/user/verify/${token}`
-        // `https://adgereachtech-web-bn.onrender.com/user/verify/${token}`
-      );
+      await axios.get(`${API_BASE_URL}/user/verify/${token}`);
       return true;
     } catch (error) {
       return false;
@@ -109,21 +104,20 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
     window.location.href = "/login";
   };
 
-  const getUser = async (token: string) => {
+  const getUser = async () => {
     try {
+      const token = localStorage.getItem("token");
       setIsLoading(true);
       if (!token) {
         window.location.href = "/login";
+        return;
       }
-      const response = await axios.get(
-        "http://localhost:5000/user/logged-user",
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${API_BASE_URL}/user/me`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUser(response.data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -142,11 +136,12 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const getAllUsers = async (token: string) => {
+  const getAllUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/user/all-user", {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(`${API_BASE_URL}/user`, {
         headers: {
-          "Contemt-Type": "application/json",
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });

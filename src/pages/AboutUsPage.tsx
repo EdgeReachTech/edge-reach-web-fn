@@ -1,16 +1,14 @@
 import React from "react";
-import image from "../assets/hero image 4.webp";
+import { CiInstagram } from "react-icons/ci";
+import { FaFacebookF, FaPinterestP } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { IoLogoGithub } from "react-icons/io";
+import { TiSocialLinkedinCircular } from "react-icons/ti";
 import goalIcon from "../assets/goal.png";
+import image from "../assets/hero image 4.webp";
 import leaderShipIcon from "../assets/leadership.png";
 import strategicIcon from "../assets/strategic-vision.png";
 import uniquenessIcon from "../assets/uniqueness.png";
-import { FaPinterestP } from "react-icons/fa";
-import { IoLogoGithub } from "react-icons/io";
-import { TiSocialLinkedinCircular } from "react-icons/ti";
-import { CiInstagram } from "react-icons/ci";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaFacebookF } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const AboutUsPage: React.FC = () => {
@@ -61,7 +59,7 @@ const AboutUsPage: React.FC = () => {
             }}
             className="w-8 md:w-40 h-[210px] md:h-[300px] absolute rounded-lg top-[110px] md:top-[300px] left-[10px] md:left-[60px] z-[1] "
           ></div>
-          <div className="bg-slate-600 h-[180px] lg:h-[400px] md:h-[300px] w-[260px] lg:w-[1000px] md:w-[500px] absolute top-[2px] md:top-[10px] left-6 md:left-36 shadow-md rounded-lg overflow-hidden">
+          <div className="bg-slate-600 h-[180px] lg:h-[400px] md:h-[300px] w-[260px] lg:w-[800px] md:w-[500px] absolute top-[2px] md:top-[10px] left-6 md:left-36 shadow-md rounded-lg overflow-hidden">
             <img src={image} alt="image" className="object-cover" />
           </div>
           <div className="ml-[50px] md:ml-[250px] max-w-[300px] md:max-w-[700px]">

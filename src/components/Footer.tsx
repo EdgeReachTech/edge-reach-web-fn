@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
           <div className='text-gray-400 flex flex-col md:flex-row  justify-around px-20 '>
             <p className='lg:-mx-32'>Created And Managed <span className='block'>By EdgeReach Tech</span></p>
             <p className='m-auto hidden lg:block '>EdgereachTech All Right Reserved 2024</p>
-            <FaRegArrowAltCircleUp size={50} className='text-cyan-500 mb-3 hidden lg:block'  />
+            <FaRegArrowAltCircleUp size={50} className='text-cyan-500 mb-3 hidden lg:block fixed bottom-5 right-5 cursor-pointer'  />
 
           </div>
         </div>
