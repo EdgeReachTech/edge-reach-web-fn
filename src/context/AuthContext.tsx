@@ -6,9 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 interface user {
   _id: string;
-  firstName:string;
+  firstName: string;
   lastName: string;
-  email: string
+  email: string;
   password: string;
   location: string;
   status: string;
@@ -20,7 +20,7 @@ interface user {
 interface AuthContextData {
   signed: boolean;
   isLoading: boolean;
-  loggedUser: user | null ;
+  loggedUser: user | null;
   users: user[];
   Login(user: object): Promise<void>;
   Register(user: object): Promise<void>;
@@ -45,7 +45,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Login = async (userData: object) => {
     try {
       const response = await axios.post(
-        "https://edgereachtech.com/user/login",
+        "http://localhost:5000/user/login",
         userData
       );
       localStorage.setItem("token", response.data.token);
@@ -68,7 +68,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Register = async (userData: object) => {
     try {
       const response = await axios.post(
-        "https://adgereachtech-web-bn.onrender.com/user/register",
+        "http://localhost:5000/user/register",
         userData
       );
       toast.success(response.data.message);
@@ -95,7 +95,8 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const Verify = async (token: string) => {
     try {
       await axios.get(
-        `https://adgereachtech-web-bn.onrender.com/user/verify/${token}`
+        `http://localhost:5000/user/verify/${token}`
+        // `https://adgereachtech-web-bn.onrender.com/user/verify/${token}`
       );
       return true;
     } catch (error) {
@@ -111,11 +112,11 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   const getUser = async (token: string) => {
     try {
       setIsLoading(true);
-      if(!token){
-        window.location.href='/login'
+      if (!token) {
+        window.location.href = "/login";
       }
       const response = await axios.get(
-        "https://adgereachtech-web-bn.onrender.com/user/logged-user",
+        "http://localhost:5000/user/logged-user",
         {
           headers: {
             "Content-Type": "application/json",
@@ -130,7 +131,6 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
           toast.error(error.response.data.message);
         } else if (error.request) {
           toast.error("failed to connect to server");
-        
         } else {
           toast.error("failed to send request");
         }
@@ -144,31 +144,26 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
 
   const getAllUsers = async (token: string) => {
     try {
-      const response = await axios.get(
-        "https://adgereachtech-web-bn.onrender.com/user/all-user",
-        {
-          headers: {
-            "Contemt-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:5000/user/all-user", {
+        headers: {
+          "Contemt-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUsers(response.data);
-    } catch (error:any) {
-      if(axios.isAxiosError(error)){
-        if(error.response)
-      {  console.log(error.response.data.message);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          console.log(error.response.data.message);
+        } else if (error.request) {
+          console.log("server failed to reposnd");
+        } else {
+          console.log("error fetching users");
+        }
+      } else {
+        console.log("unexpected error");
       }
-      else if(error.request){
-      console.log('server failed to reposnd')
-      }
-      else{
-        console.log('error fetching users')
-      }
-    }else{
-      console.log('unexpected error')
     }
-  }
   };
 
   return (
@@ -183,7 +178,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
         getUser,
         getAllUsers,
         isLoading,
-        users
+        users,
       }}
     >
       {children}

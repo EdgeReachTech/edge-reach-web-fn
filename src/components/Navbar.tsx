@@ -23,12 +23,12 @@ const Navbar: React.FC = () => {
           </h5>
           <FontAwesomeIcon
             icon={isMenuOpen ? faTimes : faBars}
-            className="text-black text-3xl fixed left-4 top-4 lg:hidden cursor-pointer"
+            className="text-black text-3xl fixed left-4 top-4 lg:hidden cursor-pointer bg-white p-2 rounded-lg"
             onClick={toggleMenu}
           />
         </div>
         <div
-          className={`lg:flex lg:flex-row bg-white w-fit fixed lg:static left-0 h-full lg:h-auto ${
+          className={`lg:flex lg:flex-row bg-white w-[80%] lg:w-fit fixed lg:static left-0 h-full lg:h-auto mt-7 lg:mt-1 rounded-[0_30px_0_0] lg:rounded-none ${
             isMenuOpen ? "flex" : "hidden"
           } transition-all duration-300 ease-in-out flex-col`}
         >
