@@ -7,9 +7,9 @@ import { API_BASE_URL } from "../config/BASE_API";
 
 export interface user {
   _id: string;
-  firstName:string;
+  firstName: string;
   lastName: string;
-  email: string
+  email: string;
   password: string;
   location: string;
   status: string;
@@ -21,7 +21,7 @@ export interface user {
 interface AuthContextData {
   signed: boolean;
   isLoading: boolean;
-  loggedUser: user | null ;
+  loggedUser: user | null;
   users: user[];
   Login(user: object): Promise<void>;
   Register(user: object): Promise<void>;
@@ -106,9 +106,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
   };
   const Verify = async (token: string) => {
     try {
-      await axios.get(
-        `${API_BASE_URL}/user/verify/${token}`
-      );
+      await axios.get(`${API_BASE_URL}/user/verify/${token}`);
       return true;
     } catch (error) {
       return false;
@@ -122,21 +120,18 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
 
   const getUser = async () => {
     try {
-      const token  = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
       setIsLoading(true);
-      if(!token){
-        window.location.href='/login'
-        return
+      if (!token) {
+        window.location.href = "/login";
+        return;
       }
-      const response = await axios.get(
-      `${API_BASE_URL}/user/me`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${API_BASE_URL}/user/me`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUser(response.data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -144,14 +139,12 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
           toast.error(error.response.data.message);
         } else if (error.request) {
           toast.error("failed to connect to server");
-        
         } else {
           toast.error("failed to send request");
         }
       } else {
         toast.error("unexpected error");
       }
-      await Logout()
     } finally {
       setIsLoading(false);
     }
@@ -159,32 +152,27 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
 
   const getAllUsers = async () => {
     try {
-      const token  = localStorage.getItem('token')
-      const response = await axios.get(
-        `${API_BASE_URL}/user`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const token = localStorage.getItem("token");
+      const response = await axios.get(`${API_BASE_URL}/user`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUsers(response.data);
-    } catch (error:any) {
-      if(axios.isAxiosError(error)){
-        if(error.response)
-      {  console.log(error.response.data.message);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          console.log(error.response.data.message);
+        } else if (error.request) {
+          console.log("server failed to reposnd");
+        } else {
+          console.log("error fetching users");
+        }
+      } else {
+        console.log("unexpected error");
       }
-      else if(error.request){
-      console.log('server failed to reposnd')
-      }
-      else{
-        console.log('error fetching users')
-      }
-    }else{
-      console.log('unexpected error')
     }
-  }
   };
 
   return (
@@ -199,7 +187,7 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
         getUser,
         getAllUsers,
         isLoading,
-        users
+        users,
       }}
     >
       {children}
