@@ -45,7 +45,16 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
 
   const Login = async (userData: object) => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/user/login`, userData);
+      const response = await axios.post(
+        `${API_BASE_URL}/user/login`,
+        userData
+        ,{
+          headers:{
+            'Content-Type':"application/json"
+          }
+        }
+      );
+      console.log(response)
       localStorage.setItem("token", response.data.token);
       await getUser();
       toast.success(response.data.message);
@@ -67,7 +76,12 @@ const AuthContextAPI: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await axios.post(
         `${API_BASE_URL}/user/register`,
-        userData
+        userData,
+        {
+          headers:{
+            'Content-Type':"application/json"
+          }
+        }
       );
       toast.success(response.data.message);
     } catch (error: any) {
