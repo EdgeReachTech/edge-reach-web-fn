@@ -6,7 +6,7 @@ interface DashboardProps {
   MainComponent: React.ComponentType; // Accept a component as a prop
 }
 const Dashboard = ({ MainComponent }: DashboardProps) => {
-  const { getUser, loggedUser, isLoading } = useAuth();
+  const { getUser, loggedUser} = useAuth();
 
   useEffect(() => {
     const fetchUser = async () => {
