@@ -15,3 +15,14 @@ export interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
 }
+
+export interface CardType {
+  comments: string[];
+  description: string;
+  image: string;
+  likes: number;
+  title: string;
+  userId: string;
+  createdAt: string;
+  _id: string;
+}
