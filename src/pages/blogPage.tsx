@@ -10,12 +10,14 @@ const BlogPage: React.FC = () => {
   const [blog, setBlog] = useState<CardType>();
   const [deleting, setDeleting] = useState(false);
   const { id } = useParams();
+  const [fetching, setFetching] = useState(false);
   // const { loggedUser } = useAuth();
 
   useEffect(() => {
     const getSingleBlog = async () => {
       try {
         if (id) {
+          setFetching(true);
           const response = await fetch(
             `${API_BASE_URL}/blog/singleBlog/${id}`,
             {
@@ -35,6 +37,8 @@ const BlogPage: React.FC = () => {
         }
       } catch (error) {
         console.log("Error fetching blogs", error);
+      } finally {
+        setFetching(false);
       }
     };
     getSingleBlog();
@@ -74,72 +78,84 @@ const BlogPage: React.FC = () => {
     }
   };
 
-  if (!blog) return <LuLoader className="mt-10 w-4 h-4 animate-spin mx-auto" />;
+  if (fetching)
+    return <LuLoader className="mt-10 w-4 h-4 animate-spin mx-auto" />;
 
   return (
     <>
       <Navbar />
       <div className="bg-[#C0C0C0] pt-16 lg:pt-32 ">
         <div className="container mx-auto">
-          <div className="flex justify-between">
-            <p className="text-[28px] p-5 font-bold">
-              <span className="bg-[#00FFFF] rounded-[10px_0px_0px_10px] px-[5px]">
-                BLOG
-              </span>
-              PAGE
-            </p>
-
-            {/* {loggedUser && loggedUser._id === blog.userId && ( */}
-            <div className="space-x-4 pr-2">
+          {!blog ? (
+            <div className="flex flex-col items-center justify-center h-screen">
+              <h2 className="text-2xl font-bold text-center">Blog not found</h2>
               <Link
-                to={`/creatingBlog?blogId=${blog._id}`}
-                className="border py-2 px-4 rounded-md"
+                to="/"
+                className="mt-5 bg-white text-black rounded-lg px-4 py-2 font-bold"
               >
-                Edit
+                Back to Homepage
               </Link>
-              <button
-                disabled={deleting}
-                onClick={() => handleDelete(blog._id)}
-                className="border bg-red-600 py-2 px-4 rounded-md"
-              >
-                {deleting ? "Deleting..." : "Delete"}
-              </button>
             </div>
-            {/* )} */}
-          </div>
+          ) : (
+            <>
+              <div className="flex justify-between">
+                <p className="text-[28px] p-5 font-bold">
+                  <span className="bg-[#00FFFF] rounded-[10px_0px_0px_10px] px-[5px]">
+                    BLOG
+                  </span>
+                  PAGE
+                </p>
 
-          <div className="my-10 w-fit mx-auto">
-            <h3 className="text-3xl text-black font-bold">Read The Blog</h3>
-          </div>
-
-          <div className="flex flex-col w-full lg:w-[70%] mx-auto gap-5 lg:10 px-3">
-            <img
-              src={blog.image}
-              alt=""
-              className="w-full mx-auto border-[7px] border-yellow-500 h-[500px] object-cover rounded-lg flex-shrink-0"
-            />
-            <div className="space-y-5">
-              <h3 className="text-xl font-bold">{blog.title}</h3>
-              <div>
-                <p>{blog.description}</p>
+                {/* {loggedUser && loggedUser._id === blog.userId && ( */}
+                <div className="space-x-4 pr-2">
+                  <Link
+                    to={`/creatingBlog?blogId=${blog._id}`}
+                    className="border py-2 px-4 rounded-md"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    disabled={deleting}
+                    onClick={() => handleDelete(blog._id)}
+                    className="border bg-red-600 py-2 px-4 rounded-md"
+                  >
+                    {deleting ? "Deleting..." : "Delete"}
+                  </button>
+                </div>
+                {/* )} */}
               </div>
-              <button className="my-4 font-bold text-xl w-full text-center text-[#02BCFF]">
-                Visit
-              </button>
-            </div>
-          </div>
 
-          <div className="w-full text-center py-5 flex justify-around">
-            <button className="bg-[#FFA500] rounded-[30px] w-[200px] py-3 text-[12px] text-white">
-              COMMENT
-            </button>
-            <button className="bg-[#00FFFF] rounded-[30px] w-[200px] py-3 text-[12px] text-white">
-              LIKE
-            </button>
-            {/* <button className="bg-[#FFA500] rounded-[30px] w-[200px] py-3 text-[12px] text-white">
-              NEXT ARTICLE
-            </button> */}
-          </div>
+              <div className="my-10 w-fit mx-auto">
+                <h3 className="text-3xl text-black font-bold">Read The Blog</h3>
+              </div>
+
+              <div className="flex flex-col w-full lg:w-[70%] mx-auto gap-5 lg:10 px-3">
+                <img
+                  src={blog.image}
+                  alt=""
+                  className="w-full mx-auto border-[7px] border-yellow-500 h-[500px] object-cover rounded-lg flex-shrink-0"
+                />
+                <div className="space-y-5">
+                  <h3 className="text-xl font-bold">{blog.title}</h3>
+                  <div>
+                    <p>{blog.description}</p>
+                  </div>
+                  <button className="my-4 font-bold text-xl w-full text-center text-[#02BCFF]">
+                    Visit
+                  </button>
+                </div>
+              </div>
+
+              <div className="w-full text-center py-5 flex justify-around">
+                <button className="bg-[#FFA500] rounded-[30px] w-[200px] py-3 text-[12px] text-white">
+                  COMMENT
+                </button>
+                <button className="bg-[#00FFFF] rounded-[30px] w-[200px] py-3 text-[12px] text-white">
+                  LIKE
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>
