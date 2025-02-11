@@ -17,7 +17,7 @@ import OurBlog from "./pages/OurBlog";
 import project from "./components/project";
 import contactPage from "./pages/contactPage";
 import CreatingBlogPage from "./pages/CreatingBlogPage";
-import dashboard from "./pages/dashboard";
+// import dashboard from "./components/dashboard";
 
 const App: React.FC = () => {
   return (
@@ -36,12 +36,12 @@ const App: React.FC = () => {
             <Route path="/verify/:token" Component={Verify} />
             <Route path="/aboutus" Component={AboutUsPage} />
             <Route path="/blogs" Component={OurBlog} />
-            <Route path="/blog/id" Component={blogPage} />
+            <Route path="/blog/:id" Component={blogPage} />
             <Route path="/project/:id" Component={projectPage} />
             <Route path="/project" Component={project} />
             <Route path="/contact" Component={contactPage} />
             <Route path="/about" Component={AboutUsPage} />
-            <Route path="/dashboard" Component={dashboard} />
+            {/* <Route path="/dashboard" Component={dashboard} /> */}
 
             {/* **_Happy */}
             <Route path="/creatingBlog" Component={CreatingBlogPage} />
