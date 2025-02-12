@@ -1,12 +1,11 @@
-import React from 'react'
-import Dashboard from '../components/dashboard'
-import message from '../components/message'
+import Dashboard from "../components/dashboard";
+import message from "../components/message";
 const MessagePage = () => {
   return (
     <div>
-      <Dashboard MainComponent={message}/>
+      <Dashboard MainComponent={message} />
     </div>
-  )
-}
+  );
+};
 
-export default MessagePage
+export default MessagePage;
