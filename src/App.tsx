@@ -17,6 +17,8 @@ import OurBlog from "./pages/OurBlog";
 import project from "./components/project";
 import contactPage from "./pages/contactPage";
 import CreatingBlogPage from "./pages/CreatingBlogPage";
+import MessagePage from "./pages/MessagePage";
+import AdminBlogPage from "./pages/AdminBlogPage";
 // import dashboard from "./components/dashboard";
 
 const App: React.FC = () => {
@@ -41,6 +43,8 @@ const App: React.FC = () => {
             <Route path="/project" Component={project} />
             <Route path="/contact" Component={contactPage} />
             <Route path="/about" Component={AboutUsPage} />
+            <Route path="/message" Component={MessagePage} />
+            <Route path="/admin_blog_page" Component={AdminBlogPage} />
             {/* <Route path="/dashboard" Component={dashboard} /> */}
 
             {/* **_Happy */}
