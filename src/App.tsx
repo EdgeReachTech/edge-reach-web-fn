@@ -8,7 +8,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import blogPage from "./pages/blogPage";
 import LandingPage from "./pages/landingPage";
 import LoginPage from "./pages/LoginPage";
-import MessagePage from "./pages/MessagePage";
+// import MessagePage from "./pages/MessagePage";
 import projectPage from "./pages/projectPage";
 import SignUpPage from "./pages/SignUpPage";
 import Verify from "./pages/Verify";
@@ -16,13 +16,14 @@ import OurBlog from "./pages/OurBlog";
 
 import project from "./components/project";
 import contactPage from "./pages/contactPage";
-import dashboard from "./components/dashboard";
-
+import CreatingBlogPage from "./pages/CreatingBlogPage";
+import MessagePage from "./pages/MessagePage";
+import AdminBlogPage from "./pages/AdminBlogPage";
+// import dashboard from "./components/dashboard";
 
 const App: React.FC = () => {
   return (
-
-    <AuthContextAPI >
+    <AuthContextAPI>
       <MessageContextAPI>
         <BrowserRouter>
           <ToastContainer
@@ -30,9 +31,6 @@ const App: React.FC = () => {
             autoClose={3000}
             hideProgressBar
           />
-
-
-
           <Routes>
             <Route path="/" Component={LandingPage} />
             <Route path="/login" Component={LoginPage} />
@@ -40,15 +38,23 @@ const App: React.FC = () => {
             <Route path="/verify/:token" Component={Verify} />
             <Route path="/aboutus" Component={AboutUsPage} />
             <Route path="/blogs" Component={OurBlog} />
-            <Route path="/blog/id" Component={blogPage} />
+            <Route path="/blog/:id" Component={blogPage} />
             <Route path="/project/:id" Component={projectPage} />
             <Route path="/project" Component={project} />
             <Route path="/contact" Component={contactPage} />
             <Route path="/about" Component={AboutUsPage} />
             <Route path="/message" Component={MessagePage} />
+            <Route path="/admin_blog_page" Component={AdminBlogPage} />
+            {/* <Route path="/dashboard" Component={dashboard} /> */}
 
+            {/* **_Happy */}
+            <Route path="/creatingBlog" Component={CreatingBlogPage} />
+            <Route path="/blog/:id" Component={blogPage} />
+            <Route path="/project/:id" Component={projectPage} />
+            <Route path="/project" Component={project} />
+            <Route path="/contact" Component={contactPage} />
+            {/* _** */}
           </Routes>
-
         </BrowserRouter>
       </MessageContextAPI>
     </AuthContextAPI>

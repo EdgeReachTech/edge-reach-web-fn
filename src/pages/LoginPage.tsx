@@ -8,43 +8,47 @@ import { toast } from "react-toastify";
 import { FaArrowLeft } from "react-icons/fa";
 const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [formData, setFormData] =  useState({
-    email:"",
-    password:""
-  })
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const {  Login } = useAuth();
+  const { Login } = useAuth();
 
   const handleLogin = async () => {
-   try {
-     setIsLoading(true)
-     await Login(formData);
-     
-   } catch (error:any) {
-    toast.error('Unexpected error occured ')
-    console.error(" login failed",error.message)
-   }
-   finally{
-    setIsLoading(false)
-   }
+    try {
+      setIsLoading(true);
+      await Login(formData);
+    } catch (error: any) {
+      toast.error("Unexpected error occured ");
+      console.error(" login failed", error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
-  const  handleCHangeFormData= (e:React.ChangeEvent<HTMLInputElement>) =>{
- const {name ,value} = e.target
- setFormData({
-  ...formData,
-  [name]:value
- })
-  }
-  
+  const handleCHangeFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   return (
     <div className="min-h-screen gap-4 bg-teal-700 ">
       <div className="min-h-screen gap-4 bg-teal-700 flex items-center justify-center p-4">
-       <a href="/"> <FaArrowLeft size={30} color="white" className="fixed top-5 left-5 "/></a>
+        <a href="/">
+          {" "}
+          <FaArrowLeft
+            size={30}
+            color="white"
+            className="fixed top-5 left-5 "
+          />
+        </a>
         <div className="max-w-md w-full max-sm:hidden bg-white p-8 rounded-lg shadow-lg ml-8">
           <div className="mb-4">
             <p>
@@ -129,7 +133,7 @@ const LoginPage: React.FC = () => {
                 type="button"
                 onClick={handleLogin}
               >
-                {isLoading?"Logging in...":"Login"}
+                {isLoading ? "Logging in..." : "Login"}
               </button>
             </div>
             <p className="mt-4">
