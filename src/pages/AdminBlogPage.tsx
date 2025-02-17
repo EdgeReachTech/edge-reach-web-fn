@@ -1,5 +1,5 @@
 import React from "react";
-import Dashboard from "../components/dashboard";
+import Dashboard from "../components/GeneralDashboard";
 import BlogComponent from "../components/blogComponent";
 
 const AdminBlogPage = () => {

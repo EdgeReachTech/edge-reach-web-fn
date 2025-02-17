@@ -27,7 +27,7 @@ const Dashboard = ({ MainComponent }: DashboardProps) => {
       <WelcPanelBoardmain />
       <div className="flex flex-1 overflow-hidden relative">
         <MainSidebar />
-        <MainComponent />
+        <MainComponent  />
 
 
       </div>

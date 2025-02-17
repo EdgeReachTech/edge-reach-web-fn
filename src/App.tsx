@@ -8,17 +8,19 @@ import AboutUsPage from "./pages/AboutUsPage";
 import blogPage from "./pages/blogPage";
 import LandingPage from "./pages/landingPage";
 import LoginPage from "./pages/LoginPage";
-// import MessagePage from "./pages/MessagePage";
 import projectPage from "./pages/projectPage";
 import SignUpPage from "./pages/SignUpPage";
 import Verify from "./pages/Verify";
 import OurBlog from "./pages/OurBlog";
-
 import project from "./components/project";
 import contactPage from "./pages/contactPage";
 import CreatingBlogPage from "./pages/CreatingBlogPage";
 import MessagePage from "./pages/MessagePage";
 import AdminBlogPage from "./pages/AdminBlogPage";
+import dashboard from "./components/GeneralDashboard";
+import DashboardPage from "./pages/DashboardPage";
+import ApplicationForm from "./pages/application";
+import StudentPage from "./pages/StudentPage";
 // import dashboard from "./components/dashboard";
 
 const App: React.FC = () => {
@@ -29,7 +31,7 @@ const App: React.FC = () => {
           <ToastContainer
             position="top-right"
             autoClose={3000}
-            hideProgressBar
+          // hideProgressBar
           />
           <Routes>
             <Route path="/" Component={LandingPage} />
@@ -44,16 +46,15 @@ const App: React.FC = () => {
             <Route path="/contact" Component={contactPage} />
             <Route path="/about" Component={AboutUsPage} />
             <Route path="/message" Component={MessagePage} />
-            <Route path="/admin_blog_page" Component={AdminBlogPage} />
-            {/* <Route path="/dashboard" Component={dashboard} /> */}
-
-            {/* **_Happy */}
+            <Route path="/admin-blog" Component={AdminBlogPage} />
+            <Route path="/dashboard" Component={DashboardPage} />
+            <Route path="apply" Component={ApplicationForm}/>
             <Route path="/creatingBlog" Component={CreatingBlogPage} />
             <Route path="/blog/:id" Component={blogPage} />
             <Route path="/project/:id" Component={projectPage} />
             <Route path="/project" Component={project} />
             <Route path="/contact" Component={contactPage} />
-            {/* _** */}
+            <Route path="/students" Component={StudentPage} />
           </Routes>
         </BrowserRouter>
       </MessageContextAPI>
