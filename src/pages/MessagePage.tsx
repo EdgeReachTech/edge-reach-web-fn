@@ -1,4 +1,4 @@
-import Dashboard from "../components/dashboard";
+import Dashboard from "../components/GeneralDashboard";
 import message from "../components/message";
 const MessagePage = () => {
   return (

@@ -83,17 +83,24 @@ const BlogComponent = () => {
     }
   };
 
-  if (fetching)
-    return <LuLoader className="mt-10 w-4 h-4 animate-spin mx-auto" />;
+  if (fetching)  return <LuLoader className="mt-10 w-4 h-4 animate-spin mx-auto" />;
   return (
-    <>
-      <div className="p-10">
+    <main className="w-full ">
+      <div className="py-4 px-10 border-b-2 flex  justify-between items-center">
+        <div>
         <h1 className="font-bold text-3xl font-sans">Blogs</h1>
         <p className="my-2 text-lg font-semibold text-gray-600">Manage blogs</p>
+        </div>
+        <a
+            href="/creatingBlog"
+            className="p-4 lg:px-4 lg:py-2 text-white bg-red-500 px-4 transition-all translate-x-5 hover:p-3 hover:bg-red-700 hover:font-extrabold py-2 rounded-md"
+          >
+            Add blog
+          </a>
       </div>
       {!cards?.length ? (
         <div className="flex items-center justify-center py-16 text-red-700 underline underline-offset-8">
-          <p>No blog posts found. Please check back later.</p>
+          <p>No blog posts found. <a href="/creatingBlog" className="font-bold text-blue-300 hover:text-blue-500 cursor-pointer">Add new</a> </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center justify-center gap-4 px-4 pb-4">
@@ -197,7 +204,7 @@ const BlogComponent = () => {
           </div>
         </div>
       )}
-    </>
+    </main>
   );
 };
 

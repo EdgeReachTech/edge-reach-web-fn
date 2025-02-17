@@ -55,21 +55,21 @@ const MainSidebar = () => {
         <nav className="flex-1 overflow-y-auto">
           <ul className="space-y-1 px-2">
             {[
-              { icon: faThLarge, text: "Dashboard" },
-              { icon: faNewspaper, text: "Blog" },
-              { icon: faComments, text: "Comments" },
-              { icon: faTasks, text: "Project" },
-              { icon: faQuoteRight, text: "Testimonial" },
-              { icon: faEnvelope, text: "Messaging" },
+              { icon: faThLarge, text: "Dashboard",link:'/dashboard' },
+              { icon: faNewspaper, text: "Blog",link:"/admin-blog" },
+              { icon: faComments, text: "Comments",link:"###" },
+              { icon: faTasks, text: "Project",link:"/Portfolio" },
+              { icon: faQuoteRight, text: "Testimonial" ,link:"/Testimony"},
+              { icon: faEnvelope, text: "Messaging",link:"/message" },
               { icon: faUsers, text: "Team Management" },
-              { icon: faUserTie, text: "Employee" },
+              { icon: faUserTie, text: "students",link:'/students' },
               { icon: faClipboardList, text: "Task Management" },
               { icon: faEnvelopeOpen, text: "Subscribers" },
               { icon: faPhone, text: "Contact" },
             ].map((item) => (
               <li key={item.text}>
                 <a
-                  href="#"
+                  href={`${item.link||'###'}`}
                   className="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700 transition-colors duration-200"
                 >
                   <FontAwesomeIcon icon={item.icon} className="w-5" />
@@ -84,7 +84,7 @@ const MainSidebar = () => {
         <div className="p-4 space-y-2">
           <button className="w-full flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700 transition-colors duration-200">
             <FontAwesomeIcon icon={faQuestionCircle} />
-            <span>Help</span>
+            <span>Setting</span>
           </button>
           <button
             onClick={() => Logout()}
