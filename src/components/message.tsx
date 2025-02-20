@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { useAuth, user } from "../context/AuthContext";
-import { useMessage } from "../context/messageAuth";
+import { useMessage } from "../context/messageContext";
 import { toast } from "react-toastify";
 const Message = () => {
   const [selectedUser, setSelectedUser] = useState<user | null>(null);
   const [msgContent, setMsgContent] = useState<string>("");
-  const { getUser, loggedUser, isLoading } = useAuth();
+  const { getUser, loggedUser } = useAuth();
   const { getMessage, message, sendMessage } = useMessage();
   const { users, getAllUsers } = useAuth();
   const formatDate = (dateString: string) => {
@@ -55,13 +55,7 @@ const Message = () => {
     };
     fetchUser();
   }, []);
-  if (isLoading)
-    return (
-      <div className="flex items-center justify-center h-screen">
-        Loading...
-      </div>
-    );
-  if (!loggedUser)
+   if (!loggedUser)
     return (
       <div className="flex items-center justify-center h-screen">
         No user found
@@ -150,18 +144,16 @@ const Message = () => {
                 .map((m, index) => (
                   <div
                     key={index}
-                    className={`flex ${
-                      m.sender === loggedUser._id
+                    className={`flex ${m.sender === loggedUser._id
                         ? "justify-end"
                         : "justify-start"
-                    }`}
+                      }`}
                   >
                     <div
-                      className={`max-w-[70%] rounded-lg p-3 ${
-                        m.sender === loggedUser._id
+                      className={`max-w-[70%] rounded-lg p-3 ${m.sender === loggedUser._id
                           ? "bg-blue-600 text-white"
                           : "bg-gray-700 text-white"
-                      }`}
+                        }`}
                     >
                       <p className="text-sm">{m.content}</p>
                       <span className="text-xs opacity-75 mt-1 block">

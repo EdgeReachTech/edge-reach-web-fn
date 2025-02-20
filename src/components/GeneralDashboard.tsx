@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import WelcPanelBoardmain from "../pages/WelcPanelBoardmain";
 import { useAuth, user } from "../context/AuthContext";
 import MainSidebar from "../pages/MainSidebar";
@@ -6,7 +6,7 @@ interface DashboardProps {
   MainComponent: React.ComponentType; // Accept a component as a prop
 }
 const Dashboard = ({ MainComponent }: DashboardProps) => {
-  const { getUser, loggedUser,isLoading} = useAuth();
+  const { getUser,isLoading} = useAuth();
 
   useEffect(() => {
     const fetchUser = async () => {

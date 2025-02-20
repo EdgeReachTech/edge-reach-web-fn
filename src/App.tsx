@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import AuthContextAPI from "./context/AuthContext";
-import MessageContextAPI from "./context/messageAuth";
+import MessageContextAPI from "./context/messageContext";
 import "./index.css";
 import AboutUsPage from "./pages/AboutUsPage";
 import blogPage from "./pages/blogPage";
@@ -48,7 +48,7 @@ const App: React.FC = () => {
             <Route path="/message" Component={MessagePage} />
             <Route path="/admin-blog" Component={AdminBlogPage} />
             <Route path="/dashboard" Component={DashboardPage} />
-            <Route path="apply" Component={ApplicationForm}/>
+            <Route path="apply" Component={ApplicationForm} />
             <Route path="/creatingBlog" Component={CreatingBlogPage} />
             <Route path="/blog/:id" Component={blogPage} />
             <Route path="/project/:id" Component={projectPage} />
