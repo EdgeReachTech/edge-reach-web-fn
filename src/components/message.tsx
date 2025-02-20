@@ -7,9 +7,8 @@ import { toast } from "react-toastify";
 const Message = () => {
   const [selectedUser, setSelectedUser] = useState<user | null>(null);
   const [msgContent, setMsgContent] = useState<string>("");
-  const { getUser, loggedUser } = useAuth();
+  const { getUser, loggedUser,getAllUsers,users } = useAuth();
   const { getMessage, message, sendMessage } = useMessage();
-  const { users, getAllUsers } = useAuth();
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const now = new Date();
