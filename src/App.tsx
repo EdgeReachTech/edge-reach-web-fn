@@ -48,7 +48,7 @@ const App: React.FC = () => {
             <Route path="/message" Component={MessagePage} />
             <Route path="/admin-blog" Component={AdminBlogPage} />
             <Route path="/dashboard" Component={DashboardPage} />
-            <Route path="apply" Component={ApplicationForm} />
+            <Route path="/apply" Component={ApplicationForm} />
             <Route path="/creatingBlog" Component={CreatingBlogPage} />
             <Route path="/blog/:id" Component={blogPage} />
             <Route path="/project/:id" Component={projectPage} />
