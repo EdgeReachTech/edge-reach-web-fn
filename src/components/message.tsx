@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const Message = () => {
   const [selectedUser, setSelectedUser] = useState<user | null>(null);
   const [msgContent, setMsgContent] = useState<string>("");
-  const { getUser, loggedUser,getAllUsers,users } = useAuth();
+  const {loggedUser,getAllUsers,users } = useAuth();
   const { getMessage, message, sendMessage } = useMessage();
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -48,7 +48,6 @@ const Message = () => {
   };
   useEffect(() => {
     const fetchUser = async () => {
-      await getUser();
       await getAllUsers();
       await getMessage();
     };
