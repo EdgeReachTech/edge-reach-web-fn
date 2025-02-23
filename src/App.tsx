@@ -17,11 +17,9 @@ import contactPage from "./pages/contactPage";
 import CreatingBlogPage from "./pages/CreatingBlogPage";
 import MessagePage from "./pages/MessagePage";
 import AdminBlogPage from "./pages/AdminBlogPage";
-import dashboard from "./components/GeneralDashboard";
 import DashboardPage from "./pages/DashboardPage";
 import ApplicationForm from "./pages/application";
 import StudentPage from "./pages/StudentPage";
-// import dashboard from "./components/dashboard";
 
 const App: React.FC = () => {
   return (

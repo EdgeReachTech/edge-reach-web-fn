@@ -1,6 +1,6 @@
 import React from "react";
 import { CiInstagram } from "react-icons/ci";
-import { FaFacebookF, FaPinterestP } from "react-icons/fa";
+import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaPinterestP, FaTiktok, FaTwitter } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoGithub } from "react-icons/io";
 import { TiSocialLinkedinCircular } from "react-icons/ti";
@@ -10,9 +10,9 @@ import leaderShipIcon from "../assets/leadership.png";
 import strategicIcon from "../assets/strategic-vision.png";
 import uniquenessIcon from "../assets/uniqueness.png";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 const AboutUsPage: React.FC = () => {
-  // const navigate = useNavigate();
   return (
     <><Navbar /><div className="flex flex-col relative bg-[#C0C0C0] p-4 md:p-16 w-full min-h-screen">
       <div className="font-loboto text-[15px] md:text-[25px] font-bold ml-5 md:ml-10">
@@ -212,12 +212,13 @@ const AboutUsPage: React.FC = () => {
           <h2 className="mb-1 text-center">Follow Us</h2>
 
           <div className="flex flex-row gap-2 justify-center items-center">
-            <FaPinterestP className="hover:text-white" />
-            <IoLogoGithub className="hover:text-white" />
-            <TiSocialLinkedinCircular className="hover:text-white" />
-            <CiInstagram className="hover:text-white" />
-            <FaXTwitter className="hover:text-white" />
-            <FaFacebookF className="hover:text-white" />
+
+            <Link to={'https://github.com/EdgeReachTech'}><FaGithub className="hover:text-white" /> </Link>
+            <Link to={'https://www.linkedin.com/in/edgereach-tech-420350345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'}>  <FaLinkedinIn className="hover:text-white" /></Link>
+            <Link to={'https://www.instagram.com/edgereachtech?igsh=aWM2bG9tOGpnbGM%3D&utm_source=qr'}><FaInstagram className="hover:text-white" /></Link>
+            <Link to={'https://x.com/edgereachtech?s=21'}> <FaTwitter className="hover:text-white" /></Link>
+            <Link to={'https://www.tiktok.com/@edgereachtech?_t=ZM-8uAJcYtVfDr&_r=1'}> <FaTiktok className="hover:text-white" /></Link>
+
           </div>
         </div>
       </div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import { IoMdCall } from 'react-icons/io';
 import { MdEmail, MdOutlinePermIdentity} from 'react-icons/md';
-import { FaSitemap, FaQuestionCircle,FaArrowRight,FaInstagram,FaTwitter,FaLinkedinIn,FaGithub,FaPinterestSquare,FaFacebook,FaRegArrowAltCircleUp } from 'react-icons/fa';
+import { FaSitemap, FaQuestionCircle,FaArrowRight,FaInstagram,FaTwitter,FaLinkedinIn,FaGithub,FaPinterestSquare,FaFacebook,FaRegArrowAltCircleUp, FaTiktok } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
@@ -49,12 +50,12 @@ const Footer: React.FC = () => {
               <div className='h-10 w-80 bg-gradient-to-r from-orange-500 to-yellow-400 mb-2 rounded-lg'>
                 <div className='flex justify-center items-center m-4 gap-2 p-3'>
                   <h3>Follow Us</h3>
-                  <FaPinterestSquare/>
-                  <FaGithub/>
-                  <FaLinkedinIn/>
-                  <FaInstagram/>
-                  <FaTwitter/>
-                  <FaFacebook/>
+                 <Link to={'https://github.com/EdgeReachTech'}><FaGithub /> </Link>
+                <Link to={'https://www.linkedin.com/in/edgereach-tech-420350345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'}>  <FaLinkedinIn/></Link>
+               <Link to={'https://www.instagram.com/edgereachtech?igsh=aWM2bG9tOGpnbGM%3D&utm_source=qr'}><FaInstagram/></Link>
+                <Link to={'https://x.com/edgereachtech?s=21'}> <FaTwitter/></Link> 
+                <Link to={'https://www.tiktok.com/@edgereachtech?_t=ZM-8uAJcYtVfDr&_r=1'}> <FaTiktok/></Link> 
+                  
                 </div>
               </div>
             </div>

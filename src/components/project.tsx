@@ -9,7 +9,7 @@ import portfolio3 from '../assets/portfolio3.png';
 import portfolio4 from '../assets/portfolio4.png';
 import portfolio5 from '../assets/portfolio5.png';
 import portfolio6 from '../assets/portfolio6.png';
-import { FaPinterestP } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedinIn, FaPinterestP, FaTiktok, FaTwitter } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { TiSocialLinkedinCircular } from "react-icons/ti";
 import { CiInstagram } from "react-icons/ci";
@@ -17,6 +17,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 const Project: React.FC = () => {
   return (
@@ -75,14 +76,15 @@ const Project: React.FC = () => {
               className="px-4 py-2 text-center font-bold"
             >
               Follow us
-              <div className="flex flex-row gap-2 mt-2 justify-center">
-                <FaPinterestP />
-                <IoLogoGithub />
-                <TiSocialLinkedinCircular />
-                <CiInstagram />
-                <FaXTwitter />
-                <FaFacebookF />
-              </div>
+              <div className="flex flex-row gap-2 justify-center items-center">
+              
+                          <Link to={'https://github.com/EdgeReachTech'}><FaGithub className="hover:text-white" /> </Link>
+                          <Link to={'https://www.linkedin.com/in/edgereach-tech-420350345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'}>  <FaLinkedinIn className="hover:text-white" /></Link>
+                          <Link to={'https://www.instagram.com/edgereachtech?igsh=aWM2bG9tOGpnbGM%3D&utm_source=qr'}><FaInstagram className="hover:text-white" /></Link>
+                          <Link to={'https://x.com/edgereachtech?s=21'}> <FaTwitter className="hover:text-white" /></Link>
+                          <Link to={'https://www.tiktok.com/@edgereachtech?_t=ZM-8uAJcYtVfDr&_r=1'}> <FaTiktok className="hover:text-white" /></Link>
+              
+                        </div>
             </div>
           </div>
         </div>

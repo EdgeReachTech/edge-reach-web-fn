@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import image1 from "../assets/image1.webp";
 // import image2 from "../assets/image2.webp";
 // import image3 from "../assets/image3.webp";
-import { FaPinterestP } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedinIn, FaPinterestP, FaTiktok, FaTwitter } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { TiSocialLinkedinCircular } from "react-icons/ti";
 import { CiInstagram } from "react-icons/ci";
@@ -118,13 +118,14 @@ const OurBlog: React.FC = () => {
           <h2 className="mb-1 text-center">Follow Us</h2>
 
           <div className="flex flex-row gap-2 justify-center items-center">
-            <FaPinterestP className="hover:text-white" />
-            <IoLogoGithub className="hover:text-white" />
-            <TiSocialLinkedinCircular className="hover:text-white" />
-            <CiInstagram className="hover:text-white" />
-            <FaXTwitter className="hover:text-white" />
-            <FaFacebookF className="hover:text-white" />
-          </div>
+          
+                      <Link to={'https://github.com/EdgeReachTech'}><FaGithub className="hover:text-white" /> </Link>
+                      <Link to={'https://www.linkedin.com/in/edgereach-tech-420350345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'}>  <FaLinkedinIn className="hover:text-white" /></Link>
+                      <Link to={'https://www.instagram.com/edgereachtech?igsh=aWM2bG9tOGpnbGM%3D&utm_source=qr'}><FaInstagram className="hover:text-white" /></Link>
+                      <Link to={'https://x.com/edgereachtech?s=21'}> <FaTwitter className="hover:text-white" /></Link>
+                      <Link to={'https://www.tiktok.com/@edgereachtech?_t=ZM-8uAJcYtVfDr&_r=1'}> <FaTiktok className="hover:text-white" /></Link>
+          
+                    </div>
         </div>
       </div>
     </>
