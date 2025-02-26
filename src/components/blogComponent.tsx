@@ -10,7 +10,6 @@ import { MdClose } from "react-icons/md";
 const BlogComponent = () => {
   const [cards, setCards] = useState<CardType[] | undefined>();
   const [fetching, setFetching] = useState(false);
-  const [deleting, setDeleting] = useState(false);
   const [viewBlog, setViewBlog] = useState(false);
   const [singleCard, setSingleCard] = useState<CardType | null>(null);
 
@@ -40,40 +39,6 @@ const BlogComponent = () => {
     getAllBlogs();
   }, []);
 
-  const handleDelete = async (blogId: string) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this blog?"
-    );
-
-    if (!confirmed) {
-      return; // Exit the function if the user cancels
-    }
-
-    setDeleting(true);
-    const token = localStorage.getItem("token");
-
-    try {
-      const response = await fetch(
-        `${API_BASE_URL}/blog/deleteBlog/${blogId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to delete the blog");
-      }
-
-      window.location.href = "/";
-    } catch (error) {
-      console.error("Error sending request:", error);
-      setDeleting(false);
-    }
-  };
-
   const readBlog = (blogId: string) => {
     if (blogId) {
       const singleBlog = cards?.find((card) => card._id === blogId);
@@ -83,24 +48,35 @@ const BlogComponent = () => {
     }
   };
 
-  if (fetching)  return <LuLoader className="mt-10 w-4 h-4 animate-spin mx-auto" />;
+  if (fetching)
+    return <LuLoader className="mt-10 w-4 h-4 animate-spin mx-auto" />;
   return (
     <main className="w-full ">
       <div className="py-4 px-10 border-b-2 flex  justify-between items-center">
         <div>
-        <h1 className="font-bold text-3xl font-sans">Blogs</h1>
-        <p className="my-2 text-lg font-semibold text-gray-600">Manage blogs</p>
+          <h1 className="font-bold text-3xl font-sans">Blogs</h1>
+          <p className="my-2 text-lg font-semibold text-gray-600">
+            Manage blogs
+          </p>
         </div>
         <a
-            href="/creatingBlog"
-            className="p-4 lg:px-4 lg:py-2 text-white bg-red-500 px-4 transition-all translate-x-5 hover:p-3 hover:bg-red-700 hover:font-extrabold py-2 rounded-md"
-          >
-            Add blog
-          </a>
+          href="/creatingBlog"
+          className="p-4 lg:px-4 lg:py-2 text-white bg-red-500 px-4 transition-all translate-x-5 hover:p-3 hover:bg-red-700 hover:font-extrabold py-2 rounded-md"
+        >
+          Add blog
+        </a>
       </div>
       {!cards?.length ? (
         <div className="flex items-center justify-center py-16 text-red-700 underline underline-offset-8">
-          <p>No blog posts found. <a href="/creatingBlog" className="font-bold text-blue-300 hover:text-blue-500 cursor-pointer">Add new</a> </p>
+          <p>
+            No blog posts found.{" "}
+            <a
+              href="/creatingBlog"
+              className="font-bold text-blue-300 hover:text-blue-500 cursor-pointer"
+            >
+              Add new
+            </a>{" "}
+          </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center justify-center gap-4 px-4 pb-4">
@@ -144,19 +120,6 @@ const BlogComponent = () => {
                     className="border py-2 px-4 rounded-md border-gray-500"
                   >
                     view
-                  </button>
-                  <Link
-                    to={`/creatingBlog?blogId=${card._id}`}
-                    className="border py-2 px-4 rounded-md bg-gray-300"
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    disabled={deleting}
-                    onClick={() => handleDelete(card._id)}
-                    className="border bg-red-600 py-2 px-4 rounded-md"
-                  >
-                    {deleting ? "Deleting..." : "Delete"}
                   </button>
                 </div>
               </div>

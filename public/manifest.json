@@ -1,0 +1,23 @@
+{
+    "name": "Your App Name",
+    "short_name": "App",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "icon/lowres.webp",
+            "sizes": "48x48",
+            "type": "image/webp"
+        },
+        {
+            "src": "icon/lowres",
+            "sizes": "48x48"
+        },
+        {
+            "src": "icon/hd_hi",
+            "sizes": "72x72"
+        }
+    ]
+  }
