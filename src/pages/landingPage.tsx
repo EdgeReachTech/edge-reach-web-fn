@@ -19,7 +19,7 @@ const LandingPage: React.FC = () => {
     <HomePage />
     <Aboutus/>
     <Servicecontent />
-    {/* <PortfolioPage /> */}
+     <PortfolioPage />
     <OurTeamComponent/>
     <TestimonyPage />
     <OurBlogPage />

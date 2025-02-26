@@ -21,6 +21,8 @@ import dashboard from "./components/GeneralDashboard";
 import DashboardPage from "./pages/DashboardPage";
 import ApplicationForm from "./pages/application";
 import StudentPage from "./pages/StudentPage";
+import portfolioAdPage from "./pages/portfolioAdPage";
+import CreatingPortfolio from "./components/CreatingPortfolio";
 // import dashboard from "./components/dashboard";
 
 const App: React.FC = () => {
@@ -55,6 +57,8 @@ const App: React.FC = () => {
             <Route path="/project" Component={project} />
             <Route path="/contact" Component={contactPage} />
             <Route path="/students" Component={StudentPage} />
+            <Route path="/portfolio" Component={portfolioAdPage} />
+            <Route path="/creatingPortfolio" Component={CreatingPortfolio} />
           </Routes>
         </BrowserRouter>
       </MessageContextAPI>
