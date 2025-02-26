@@ -1,6 +1,5 @@
 import React from 'react';
 import { IoMdCall } from 'react-icons/io';
-import { Link } from 'react-router-dom';
 import { MdEmail, MdOutlinePermIdentity } from 'react-icons/md';
 import {
   FaSitemap,
