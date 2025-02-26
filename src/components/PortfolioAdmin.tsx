@@ -18,7 +18,7 @@ interface PortfolioType {
 }
 
 const PortfolioAdmin = () => {
-  const { loggedUser, Logout, getUser } = useAuth();
+  const { loggedUser, Logout,} = useAuth();
   const navigate = useNavigate();
   const [portfolios, setPortfolios] = useState<PortfolioType[]>([]);
   const [fetching, setFetching] = useState(true);
@@ -34,15 +34,14 @@ const PortfolioAdmin = () => {
       setIsAuthLoading(true);
       if (!token || !loggedUser) {
         try {
-          await getUser();
           if (!localStorage.getItem("token") || !loggedUser) {
             setError("User not authenticated. Please log in.");
-            navigate("/login");
+          
             return;
           }
         } catch (err) {
           setError("Authentication failed. Please log in again.");
-          navigate("/login");
+        
           return;
         }
       }
@@ -50,7 +49,7 @@ const PortfolioAdmin = () => {
     };
 
     initializeAuth();
-  }, [token, loggedUser, getUser, navigate]);
+  }, [token, loggedUser, navigate]);
 
   // Fetch portfolios
   useEffect(() => {
