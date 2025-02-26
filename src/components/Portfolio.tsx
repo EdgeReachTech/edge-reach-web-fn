@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {  faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { API_BASE_URL } from "../config/BASE_API";
 import { useAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
@@ -47,7 +47,6 @@ const Portfolio: React.FC = () => {
     fetchPortfolios();
   }, []);
 
-  // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -57,7 +56,6 @@ const Portfolio: React.FC = () => {
   return (
     <div id="home" className="relative min-h-screen p-5 md:p-10 bg-gray-100">
       <div className="pt-20 flex flex-col">
-        {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -118,7 +116,6 @@ const Portfolio: React.FC = () => {
         </div>
       </div>
 
-      {/* Footer Link */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
