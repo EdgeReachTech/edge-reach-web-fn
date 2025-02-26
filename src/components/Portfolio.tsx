@@ -4,6 +4,7 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { API_BASE_URL } from "../config/BASE_API";
 import { useAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 interface PortfolioType {
   _id: string;
@@ -21,53 +22,22 @@ const Portfolio: React.FC = () => {
   const [portfolios, setPortfolios] = useState<PortfolioType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const portfoliosPerPage = 6; // Increased for better large-screen usage
-
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchPortfolios = async () => {
       setLoading(true);
       setError(null);
       try {
-        if (token && !loggedUser) {
-          await getUser();
-        }
-
-        const response = await fetch(
-          `${API_BASE_URL}/portfolio?page=${currentPage}&limit=${portfoliosPerPage}`,
-          {
-            headers: token
-              ? {
-                  Authorization: `Bearer ${token}`,
-                }
-              : {},
-          }
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch portfolios");
-        }
-        const data = await response.json();
-
-        console.log("Fetched Data:", data);
-
-        if (Array.isArray(data)) {
-          setPortfolios(data);
-          setTotalPages(Math.ceil(data.length / portfoliosPerPage));
-        } else if (data.portfolios && data.total) {
-          setPortfolios(data.portfolios);
-          setTotalPages(Math.ceil(data.total / portfoliosPerPage));
+        const response = await axios.get(`${API_BASE_URL}/portfolio`);
+        if (response.data && Array.isArray(response.data)) {
+          setPortfolios(response.data.slice(0, 6)); // Limit to 6 portfolios
+        } else if (response.data.portfolios) {
+          setPortfolios(response.data.portfolios.slice(0, 6));
         } else {
           throw new Error("Unexpected API response format");
         }
       } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message || "An error occurred while fetching portfolios");
-        } else {
-          setError("An error occurred while fetching portfolios");
-        }
+        setError("An error occurred while fetching portfolios");
         console.error("Fetch Error:", err);
       } finally {
         setLoading(false);
@@ -75,19 +45,7 @@ const Portfolio: React.FC = () => {
     };
 
     fetchPortfolios();
-  }, [token, currentPage, loggedUser, getUser]);
-
-  // Pagination handlers
-  const handlePrev = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  const handleNext = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-
-  // Client-side pagination
-  const paginatedPortfolios = Array.isArray(portfolios)
-    ? portfolios.slice(
-        (currentPage - 1) * portfoliosPerPage,
-        currentPage * portfoliosPerPage
-      )
-    : portfolios;
+  }, []);
 
   // Animation variants
   const cardVariants = {
@@ -123,11 +81,11 @@ const Portfolio: React.FC = () => {
             <p className="text-center text-gray-500">Loading portfolios...</p>
           ) : error ? (
             <p className="text-center text-red-500">{error}</p>
-          ) : paginatedPortfolios.length === 0 ? (
+          ) : portfolios.length === 0 ? (
             <p className="text-center text-gray-500">No portfolios available</p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {paginatedPortfolios.map((portfolio) => (
+              {portfolios.map((portfolio) => (
                 <motion.div
                   key={portfolio._id}
                   variants={cardVariants}
@@ -158,36 +116,6 @@ const Portfolio: React.FC = () => {
             </div>
           )}
         </div>
-
-        {/* Pagination Controls (only shown if needed) */}
-        {totalPages > 1 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-row justify-center mt-10"
-          >
-            <FontAwesomeIcon
-              icon={faAngleLeft}
-              onClick={handlePrev}
-              className={`text-xl mx-2 p-3 bg-gray-400 rounded-full hover:bg-gray-500 cursor-pointer text-white transition-colors duration-200 ${
-                currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              aria-disabled={currentPage === 1}
-            />
-            <span className="text-gray-600 mx-4 self-center">
-              Page {currentPage} of {totalPages}
-            </span>
-            <FontAwesomeIcon
-              icon={faAngleRight}
-              onClick={handleNext}
-              className={`text-xl mx-2 p-3 bg-gray-400 rounded-full hover:bg-gray-500 cursor-pointer text-white transition-colors duration-200 ${
-                currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              aria-disabled={currentPage === totalPages}
-            />
-          </motion.div>
-        )}
       </div>
 
       {/* Footer Link */}
